@@ -1,21 +1,288 @@
 <!doctype html>
-<html lang="es" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mara Schmitman | Consultoría de Carrera Estratégica</title>
-    <meta name="description" content="Consultorías personalizadas individuales y grupales de orientación y estrategia de carrera, inserción laboral y cambio de rumbo profesional. Lic. en Psicología y especialista en diseño organizacional." />
-    <meta property="og:title" content="Mara Schmitman | Consultoría de Carrera Estratégica" />
-    <meta property="og:description" content="Consultorías personalizadas individuales y grupales de orientación y estrategia de carrera, inserción laboral y cambio de rumbo profesional. Lic. en Psicología y especialista en diseño organizacional." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
-  </head>
-  <body class="bg-white text-slate-950 antialiased selection:bg-[#16a34a] selection:text-white">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mara Schmitman | Consultoría de carrera</title>
+<meta name="description" content="Consultoría de carrera individual y grupal para insertarte en el mercado laboral o cambiar de rumbo. Lic. en Psicología, 18 años armando equipos y diseño organizacional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+<nav class="rail" aria-label="Secciones">
+  <a href="#inicio" class="rail-logo">MS.</a>
+  <ul>
+    <li><a href="#caminos">Caminos</a></li>
+    <li><a href="#programas">Programas</a></li>
+    <li><a href="#termometro">Diagnóstico</a></li>
+    <li><a href="#enfoque">Enfoque</a></li>
+    <li><a href="#sobre">Sobre Mara</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contacto">Hablemos</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section id="inicio" class="hero">
+  <p class="eyebrow">Lic. en Psicología &amp; especialista en diseño organizacional</p>
+  <h1>Estrategia de<br><em>carrera</em><br>real<span class="dot">.</span></h1>
+  <p class="lead">Consultorías <strong>individuales (1 a 1)</strong> y <strong>grupales</strong> para quienes buscan <u>insertarse en el mercado laboral</u> o <u>cambiar de rumbo</u> con bases firmes.</p>
+  <div class="actions">
+    <a href="#contacto" class="btn btn-dark">Hablemos →</a>
+    <a href="#termometro" class="btn btn-line">Diagnóstico de 2 minutos</a>
+  </div>
+  <div class="stat">
+    <span class="mono">Trayectoria</span>
+    <strong>18+ años</strong>
+    <span>armando equipos y diseño organizacional</span>
+  </div>
+</section>
+
+<!-- CAMINOS -->
+<section id="caminos" class="wrap">
+  <p class="mono">01 / Dos caminos</p>
+  <div class="split-head">
+    <h2>¿Cuál es tu momento de <em>carrera</em><span class="dot">?</span></h2>
+    <p class="serif-note">Conseguir el primer trabajo y cambiar de rumbo después de diez años de ejercicio profesional piden estrategias distintas, porque el mercado mira cosas distintas en cada caso.</p>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" class="tab active" data-track="a" aria-selected="true">
+      <span class="mono">Camino A</span>
+      <strong>Inserción en el mercado laboral</strong>
+      <span>Para quienes terminaron estudios, bootcamps o carreras y necesitan destrabar el ingreso al mercado formal.</span>
+    </button>
+    <button role="tab" class="tab" data-track="b" aria-selected="false">
+      <span class="mono">Camino B</span>
+      <strong>Cambio de rumbo y transición</strong>
+      <span>Para profesionales con trayectoria que quieren reinventar su rol, saltar de industria o resignificar su experiencia.</span>
+    </button>
+  </div>
+
+  <div class="track" data-panel="a">
+    <div>
+      <p class="tag">Primer empleo y acceso al mercado</p>
+      <h3>Inserción en el mercado laboral</h3>
+      <p>Para quienes buscan entrar al mercado laboral o tecnológico y necesitan convertir su formación en algo que quien contrata pueda evaluar.</p>
+      <div class="actions">
+        <a href="#contacto" class="btn btn-dark" data-pre="insercion|individual">Hablemos: 1 a 1</a>
+        <a href="#contacto" class="btn btn-line" data-pre="insercion|grupal">Hablemos: grupal (4 a 6)</a>
+      </div>
+    </div>
+    <div class="box">
+      <p class="mono warn">Las trampas más frecuentes</p>
+      <ul class="x">
+        <li>Te piden experiencia previa para un puesto de entrada.</li>
+        <li>El CV está lleno de adjetivos y le faltan evidencias y decisiones concretas.</li>
+        <li>No sabés con qué criterios eligen los líderes de equipo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="track" data-panel="b" hidden>
+    <div>
+      <p class="tag">Pivot y reconversión</p>
+      <h3>Cambio de rumbo y transición</h3>
+      <p>Para quienes ya tienen años de trabajo encima y quieren mover esa experiencia a otro rol o industria sin volver a empezar de cero.</p>
+      <div class="actions">
+        <a href="#contacto" class="btn btn-dark" data-pre="pivot|individual">Hablemos: 1 a 1</a>
+        <a href="#contacto" class="btn btn-line" data-pre="pivot|grupal">Hablemos: grupal (4 a 6)</a>
+      </div>
+    </div>
+    <div class="box">
+      <p class="mono warn">Las trampas más frecuentes</p>
+      <ul class="x">
+        <li>Contar la trayectoria en el idioma de la industria anterior.</li>
+        <li>Aceptar un puesto junior por miedo a no tener la experiencia exacta.</li>
+        <li>Postularse a todo sin haber definido primero hacia dónde ir.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS -->
+<section id="programas" class="band">
+  <div class="wrap-wide">
+    <div class="split-head">
+      <div>
+        <p class="mono">02 / Modalidades</p>
+        <h2>Formatos y<br>programas<span class="dot">.</span></h2>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrar programas">
+        <button class="filter active" data-filter="all">Todas (4)</button>
+        <button class="filter" data-filter="individual">Individual 1 a 1</button>
+        <button class="filter" data-filter="grupal">Grupal (4 a 6)</button>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card" data-mode="individual">
+        <p class="mono">01 / 1 a 1 <span class="pill">Ambos caminos</span></p>
+        <h3>Diagnóstico 1 a 1: calibración y posicionamiento</h3>
+        <p class="meta">1 encuentro de 90 min + devolución escrita</p>
+        <p class="who"><span class="mono">Para quién</span>Personas que necesitan un diagnóstico honesto y un plan de acción rápido.</p>
+        <p class="price">Precio: a definir</p>
+        <a href="#contacto" class="btn btn-line full" data-pre="evaluar|individual">Hablemos de este formato ↗</a>
+      </article>
+      <article class="card" data-mode="individual">
+        <p class="mono">02 / 1 a 1 <span class="pill">Cambio de rumbo</span></p>
+        <h3>Programa integral 1 a 1: transición estratégica</h3>
+        <p class="meta">4 encuentros individuales en 6 semanas + soporte</p>
+        <p class="who"><span class="mono">Para quién</span>Profesionales en transición de industria o de rol que quieren acompañamiento continuo.</p>
+        <p class="price">Precio: a definir</p>
+        <a href="#contacto" class="btn btn-line full" data-pre="pivot|individual">Hablemos de este formato ↗</a>
+      </article>
+      <article class="card" data-mode="grupal">
+        <p class="mono">03 / Grupo de 4 a 6 <span class="pill">Inserción</span></p>
+        <h3>Laboratorio grupal: inserción al mercado</h3>
+        <p class="meta">3 encuentros de 2 horas, cohorte intensiva</p>
+        <p class="who"><span class="mono">Para quién</span>Jóvenes profesionales que aprenden mejor con pares y feedback del grupo.</p>
+        <p class="price">Precio: a definir</p>
+        <a href="#contacto" class="btn btn-line full" data-pre="insercion|grupal">Hablemos de este formato ↗</a>
+      </article>
+      <article class="card" data-mode="grupal">
+        <p class="mono">04 / Grupo de 4 a 6 <span class="pill">Cambio de rumbo</span></p>
+        <h3>Mesa redonda grupal: rediseño y pivot profesional</h3>
+        <p class="meta">4 encuentros quincenales de 2 horas</p>
+        <p class="who"><span class="mono">Para quién</span>Líderes y especialistas con experiencia que quieren contrastar su transición con pares.</p>
+        <p class="price">Precio: a definir</p>
+        <a href="#contacto" class="btn btn-line full" data-pre="pivot|grupal">Hablemos de este formato ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TERMOMETRO -->
+<section id="termometro" class="wrap center">
+  <p class="mono">03 / Evaluación preliminar</p>
+  <h2>Termómetro de <em>carrera</em><span class="dot">.</span></h2>
+  <p class="serif-note narrow">Cuatro preguntas para ver qué formato te conviene: individual o grupal, inserción o cambio de rumbo.</p>
+
+  <div class="quiz" id="quiz" aria-live="polite">
+    <div class="quiz-top"><span class="mono" id="q-count">Pregunta 1 de 4</span><span class="bars" id="q-bars"><i></i><i></i><i></i><i></i></span></div>
+    <h3 id="q-title"></h3>
+    <div id="q-options" class="options"></div>
+    <p class="mono quiz-foot">Sin costo ni compromiso</p>
+  </div>
+</section>
+
+<!-- ENFOQUE -->
+<section id="enfoque" class="enfoque">
+  <div>
+    <p class="mono">04 / El enfoque</p>
+    <h2>Hechos,<br><em>no adjetivos</em><span class="dot">.</span></h2>
+  </div>
+  <blockquote>“Un perfil profesional sólido no se construye decorando adjetivos, sino ordenando los problemas que resolviste y demostrando qué valor concreto aportás a una organización.”</blockquote>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="about">
+  <div class="about-text">
+    <p class="mono">05 / Sobre Mara Schmitman</p>
+    <h2>Criterio forjado en<br><em>el terreno</em><span class="dot">.</span></h2>
+    <p>Soy Licenciada en Psicología, con posgrado en Gestión Estratégica de Tecnología, y especialista en diseño organizacional. En 2008 fundé <strong>Schmitman HR</strong>, una firma dedicada al armado de equipos, talento y estructura de trabajo.</p>
+    <p>Llevo más de 18 años armando equipos y diseñando organizaciones, sentada del lado de quien decide a quién se contrata. Abro este espacio, individual y grupal, para que ese criterio les sirva directamente a las personas que necesitan entrar al mercado o cambiar de rumbo.</p>
+    <dl class="creds">
+      <div><dt>Formación</dt><dd>Lic. en Psicología</dd></div>
+      <div><dt>Especialidad</dt><dd>Diseño organizacional</dd></div>
+      <div><dt>Base</dt><dd>Tigre, Buenos Aires (sesiones remotas)</dd></div>
+      <div><dt>Perfil</dt><dd><a href="https://www.linkedin.com/in/mara-schmitman2/" target="_blank" rel="noopener">LinkedIn ↗</a></dd></div>
+    </dl>
+  </div>
+  <figure class="about-img">
+    <figcaption>
+      <p class="mono green">Declaración de principios</p>
+      <p class="quote">“La tecnología escala; la cultura y las trayectorias sostienen. No hay atajos sin método ni talento sin evidencia.”</p>
+      <p class="sign"><span class="avatar" aria-hidden="true"><img src="mara.jpg" alt="" onerror="this.remove()">MS</span>Mara Schmitman</p>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="wrap narrow-wrap">
+  <p class="mono center">06 / Preguntas frecuentes</p>
+  <h2 class="center">Dudas y <em>aclaraciones</em><span class="dot">.</span></h2>
+  <div class="faq">
+    <details open>
+      <summary><span class="mono">01</span>¿Cómo elijo entre la modalidad individual (1 a 1) y la grupal?</summary>
+      <p>El 1 a 1 conviene si tu caso necesita confidencialidad, si tiene particularidades de seniority o si querés trabajar a fondo sobre tu CV y tu búsqueda. El grupo de 4 a 6 personas sirve si aprendés viendo cómo otros resuelven lo mismo y querés practicar entrevistas con pares antes de hacerlas en serio. Si no sabés, lo definimos en el primer contacto.</p>
+    </details>
+    <details>
+      <summary><span class="mono">02</span>¿Puedo participar si no trabajo en tecnología ni busco un rol tech?</summary>
+      <p>Sí. Buena parte de mi experiencia viene de equipos de tecnología, pero los criterios con los que se decide una contratación se parecen bastante entre industrias.</p>
+    </details>
+    <details>
+      <summary><span class="mono">03</span>¿Cómo coordinamos las sesiones y la agenda?</summary>
+      <p>Después de leer tu mensaje y tu perfil te respondo por mail con una propuesta de días y horarios. Los grupos arrancan cuando se completa el cupo.</p>
+    </details>
+    <details>
+      <summary><span class="mono">04</span>¿Las sesiones son remotas o presenciales?</summary>
+      <p>Remotas, por videollamada.</p>
+    </details>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="band">
+  <div class="wrap center">
+    <p class="mono">07 / Contacto directo</p>
+    <h2 class="big">Hablemos<span class="dot">.</span></h2>
+    <p class="serif-note narrow">Contame tu caso, ya sea para una sesión individual o para sumarte a un grupo reducido.</p>
+
+    <form id="form" class="form" novalidate>
+      <div class="row">
+        <label>1. Objetivo principal
+          <select name="objetivo" id="f-objetivo">
+            <option value="insercion">Inserción en el mercado laboral (primer empleo)</option>
+            <option value="pivot">Cambio de rumbo y transición profesional</option>
+            <option value="evaluar" selected>A evaluar en el primer contacto</option>
+          </select>
+        </label>
+        <label>2. Modalidad preferida
+          <select name="modalidad" id="f-modalidad">
+            <option value="individual">Individual 1 a 1</option>
+            <option value="grupal">Grupal (4 a 6 personas)</option>
+            <option value="indiferente" selected>Indiferente, lo que recomiende Mara</option>
+          </select>
+        </label>
+      </div>
+      <div class="row">
+        <label>Nombre completo *<input name="nombre" required placeholder="Laura Rossi"></label>
+        <label>Correo electrónico *<input name="email" type="email" required placeholder="tu@email.com"></label>
+      </div>
+      <label>Perfil de LinkedIn o link a tu CV *<input name="perfil" required placeholder="https://linkedin.com/in/tu-perfil">
+        <small>Lo leo antes de responderte, para entender tu trayectoria real.</small></label>
+      <label>Contame tu situación actual y qué te está trabando *<textarea name="mensaje" rows="4" required placeholder="Ej: llevo 7 años en finanzas y quiero pasar a operaciones en una empresa de tecnología, pero no sé cómo contar mi experiencia ni qué sueldo pedir."></textarea></label>
+      <input type="hidden" name="diagnostico" id="f-diag">
+      <p class="diag-note" id="diag-note" hidden></p>
+      <div class="form-foot">
+        <p>Te respondo personalmente en 24 a 48 hs hábiles.<br>Lo que me cuentes queda entre nosotras/os.</p>
+        <button type="submit" class="btn btn-dark">Enviar mensaje</button>
+      </div>
+      <p class="form-msg" id="form-msg" hidden></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div>
+    <p class="foot-logo">MS<span class="dot">.</span></p>
+    <p>Consultoría de carrera y diseño organizacional. Individual y grupal.</p>
+  </div>
+  <div class="foot-links">
+    <a href="https://www.linkedin.com/in/mara-schmitman2/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:mara@schmitman.com">mara@schmitman.com</a>
+  </div>
+  <p class="mono small">© 2026 Mara Schmitman. Tigre, Buenos Aires.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
