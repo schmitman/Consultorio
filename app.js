@@ -1,4 +1,4 @@
-const CONTACT_EMAIL = 'hola@maraschmitman.com';
+const CONTACT_EMAIL = 'mara@schmitman.com';
 const mailto = (resultado) => 'mailto:' + CONTACT_EMAIL +
   '?subject=' + encodeURIComponent('Consulta de carrera: ' + resultado) +
   '&body=' + encodeURIComponent('Hola Mara,\n\nHice el termómetro y me recomendó: ' + resultado + '.\n\nTe cuento mi situación:\n\n\nMi LinkedIn o CV:\n');

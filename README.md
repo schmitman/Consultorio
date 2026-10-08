@@ -11,4 +11,4 @@ Sitio estático (HTML, CSS y JS, sin build). Se publica en Cloudflare Pages.
 - `mara.jpg`: foto de Mara (cuadrada, se muestra en círculo de 72px en gris).
 - Imágenes: `flores.jpg` (Sobre Mara) y `hoja.jpg` (fondo del hero), fotos de Unsplash en escala de grises.
 - Precios en `index.html` (buscar "Precio: a definir").
-- Contacto: los botones "Hablemos" abren un mail a hola@maraschmitman.com (sin formulario).
+- Contacto: los botones "Hablemos" abren un mail a mara@schmitman.com (sin formulario).
