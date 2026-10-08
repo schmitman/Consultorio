@@ -1,7 +1,7 @@
 // Si se configura un servicio de formularios (ej. Formspree), pegar la URL acá.
 // Mientras esté vacío, el formulario abre el correo con el mensaje armado.
 const FORM_ENDPOINT = '';
-const CONTACT_EMAIL = 'mara@schmitman.com';
+const CONTACT_EMAIL = 'hola@maraschmitman.com';
 
 /* Caminos */
 document.querySelectorAll('.tab').forEach(tab => {
