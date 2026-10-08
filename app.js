@@ -1,7 +1,7 @@
-// Si se configura un servicio de formularios (ej. Formspree), pegar la URL acá.
-// Mientras esté vacío, el formulario abre el correo con el mensaje armado.
-const FORM_ENDPOINT = '';
 const CONTACT_EMAIL = 'hola@maraschmitman.com';
+const mailto = (resultado) => 'mailto:' + CONTACT_EMAIL +
+  '?subject=' + encodeURIComponent('Consulta de carrera: ' + resultado) +
+  '&body=' + encodeURIComponent('Hola Mara,\n\nHice el termómetro y me recomendó: ' + resultado + '.\n\nTe cuento mi situación:\n\n\nMi LinkedIn o CV:\n');
 
 /* Caminos */
 document.querySelectorAll('.tab').forEach(tab => {
@@ -17,16 +17,6 @@ document.querySelectorAll('.filter').forEach(btn => {
     document.querySelectorAll('.filter').forEach(b => b.classList.toggle('active', b === btn));
     const f = btn.dataset.filter;
     document.querySelectorAll('.card').forEach(c => { c.hidden = f !== 'all' && c.dataset.mode !== f; });
-  });
-});
-
-/* Preselección del formulario desde los botones */
-const fObj = document.getElementById('f-objetivo');
-const fMod = document.getElementById('f-modalidad');
-document.querySelectorAll('[data-pre]').forEach(a => {
-  a.addEventListener('click', () => {
-    const [obj, mod] = a.dataset.pre.split('|');
-    fObj.value = obj; fMod.value = mod;
   });
 });
 
@@ -102,46 +92,9 @@ function renderResult() {
   qOpts.innerHTML = `<div class="result">
     <p>Por lo que respondiste, tu momento se parece más a un proceso de <strong>${caminoTxt}</strong>, y te conviene arrancar en formato <strong>${modo === 'grupal' ? 'grupal' : 'individual'}</strong>.</p>
     <p>Es una orientación inicial; lo confirmamos cuando leo tu caso.</p>
-    <div class="actions"><a href="#contacto" class="btn btn-dark" id="q-go">Contarle mi caso a Mara →</a>
+    <div class="actions"><a href="${mailto(p.name)}" class="btn btn-dark">Contarle mi caso a Mara →</a>
     <button class="btn btn-line" id="q-reset">Volver a empezar</button></div></div>`;
-  document.getElementById('q-go').onclick = () => {
-    fObj.value = p.obj; fMod.value = p.mod;
-    document.getElementById('f-diag').value = p.name;
-    const note = document.getElementById('diag-note');
-    note.textContent = `Resultado del termómetro: ${p.name}`;
-    note.hidden = false;
-  };
   document.getElementById('q-reset').onclick = () => { step = 0; score = {}; renderQ(); };
 }
 renderQ();
 
-/* Formulario */
-const form = document.getElementById('form');
-const msg = document.getElementById('form-msg');
-form.addEventListener('submit', async e => {
-  e.preventDefault();
-  if (!form.checkValidity()) { form.reportValidity(); return; }
-  const d = Object.fromEntries(new FormData(form));
-  const label = sel => sel.options[sel.selectedIndex].text;
-
-  if (FORM_ENDPOINT) {
-    try {
-      const r = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
-      if (!r.ok) throw new Error();
-      form.reset();
-      msg.textContent = 'Recibí tu mensaje. Te respondo en 24 a 48 hs hábiles.';
-      msg.hidden = false;
-      return;
-    } catch { /* si falla, cae al correo */ }
-  }
-
-  const body = [
-    `Nombre: ${d.nombre}`, `Email: ${d.email}`, `Perfil: ${d.perfil}`,
-    `Objetivo: ${label(fObj)}`, `Modalidad: ${label(fMod)}`,
-    d.diagnostico ? `Termómetro: ${d.diagnostico}` : '',
-    '', d.mensaje
-  ].filter(Boolean).join('\n');
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Consulta de carrera: ' + d.nombre)}&body=${encodeURIComponent(body)}`;
-  msg.textContent = 'Se abrió tu correo con el mensaje armado. Solo falta que lo envíes.';
-  msg.hidden = false;
-});

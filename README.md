@@ -9,6 +9,6 @@ Sitio estático (HTML, CSS y JS, sin build). Se publica en Cloudflare Pages.
 
 ## Pendientes antes de publicar
 - `mara.jpg`: foto de Mara (cuadrada, se muestra en círculo de 72px en gris).
-- `flores.jpg`: imagen de fondo de la sección "Sobre Mara".
+- Imágenes: `flores.jpg` (Sobre Mara) y `hoja.jpg` (fondo del hero), fotos de Unsplash en escala de grises.
 - Precios en `index.html` (buscar "Precio: a definir").
-- Formulario: pegar la URL de Formspree (u otro) en `FORM_ENDPOINT` dentro de `app.js`. Sin eso, abre el correo de la persona con el mensaje armado.
+- Contacto: los botones "Hablemos" abren un mail a hola@maraschmitman.com (sin formulario).
