@@ -1,0 +1,164 @@
+import React, { useState } from 'react';
+import { CAMINOS, PROGRAMAS, FAQ, LINKEDIN, EMAIL, mailto, type Mode } from '../content';
+const mara = '/mara.jpg'; // foto que ya vive en la raíz del repo
+
+const Eyebrow: React.FC<{ children: React.ReactNode }> = ({ children }) => <p className="mono">{children}</p>;
+const H2: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <h2 className="text-4xl sm:text-5xl leading-[1.05] mt-3">{children}</h2>
+);
+
+/* ---------- 00 PORTADA ---------- */
+export const Portada: React.FC<{ go: (id: 'termometro' | 'caminos') => void }> = ({ go }) => (
+  <div className="max-w-2xl">
+    <Eyebrow>Lic. en Psicología &amp; diseño organizacional</Eyebrow>
+    <h1 className="text-6xl sm:text-7xl lg:text-[5.5rem] leading-[0.98] mt-4">
+      Estrategia de<br /><em>carrera</em><span className="dot">.</span>
+    </h1>
+    <p className="text-lg sm:text-xl text-ink/80 leading-relaxed mt-6 max-w-lg">
+      Consultorías individuales y grupales para entrar al mercado laboral o cambiar de rumbo con bases firmes.
+    </p>
+    <div className="flex flex-wrap gap-3 mt-7">
+      <a href={mailto('Consulta de carrera')} className="btn btn-dark pixel-border-soft">Hablemos →</a>
+      <button onClick={() => go('termometro')} className="btn btn-line">Diagnóstico de 2 minutos</button>
+    </div>
+    <p className="mt-8 text-sm text-muted">
+      <span className="font-serif text-2xl text-ink mr-2">18+ años</span> armando equipos, del lado de quien decide a quién se contrata.
+    </p>
+  </div>
+);
+
+/* ---------- 01 CAMINOS ---------- */
+export const Caminos: React.FC = () => (
+  <div className="max-w-4xl">
+    <Eyebrow>01 / Dos caminos</Eyebrow>
+    <H2>¿Cuál es tu momento de <em>carrera</em><span className="dot">?</span></H2>
+    <p className="text-ink/75 mt-3 max-w-xl">Conseguir el primer trabajo y cambiar de rumbo piden estrategias distintas, porque el mercado mira cosas distintas en cada caso.</p>
+    <div className="grid md:grid-cols-2 gap-4 mt-8">
+      {(['a', 'b'] as const).map((k) => {
+        const c = CAMINOS[k];
+        return (
+          <article key={k} className="card p-5 sm:p-6 flex flex-col gap-3 bg-white/55">
+            <span className="mono text-rose">{c.tab} · {c.tag}</span>
+            <h3 className="text-2xl sm:text-3xl leading-tight">{c.title}</h3>
+            <p className="text-sm text-ink/80">{c.text}</p>
+            <ul className="text-sm text-ink/80 space-y-1.5 mt-1">
+              <li className="mono !text-[0.6rem]">Las trampas más frecuentes</li>
+              {c.traps.map((t) => (
+                <li key={t} className="flex gap-2"><span className="text-rose font-mono shrink-0">×</span>{t}</li>
+              ))}
+            </ul>
+            <div className="flex flex-wrap gap-2 mt-auto pt-2">
+              <a href={c.cta1} className="btn btn-dark !py-2 !min-h-0 text-xs">1 a 1</a>
+              <a href={c.cta2} className="btn btn-line !py-2 !min-h-0 text-xs">Grupal (4 a 6)</a>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+);
+
+/* ---------- 02 PROGRAMAS ---------- */
+export const Programas: React.FC = () => {
+  const [f, setF] = useState<'all' | Mode>('all');
+  const list = PROGRAMAS.filter((p) => f === 'all' || p.mode === f);
+  const F: { k: 'all' | Mode; label: string }[] = [
+    { k: 'all', label: 'Todos' }, { k: 'individual', label: '1 a 1' }, { k: 'grupal', label: 'Grupal' },
+  ];
+  return (
+    <div className="max-w-4xl">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <Eyebrow>02 / Modalidades</Eyebrow>
+          <H2>Formatos y <em>programas</em><span className="dot">.</span></H2>
+        </div>
+        <div className="flex gap-2" role="group" aria-label="Filtrar programas">
+          {F.map((x) => (
+            <button key={x.k} onClick={() => setF(x.k)} className={`btn !py-1.5 !min-h-0 text-xs ${f === x.k ? 'btn-dark' : 'btn-line'}`}>{x.label}</button>
+          ))}
+        </div>
+      </div>
+      <div className="grid sm:grid-cols-2 gap-3 mt-7">
+        {list.map((p) => (
+          <article key={p.title} className="card p-5 flex flex-col gap-2 bg-white/55">
+            <div className="flex justify-between gap-2">
+              <span className="mono">{p.num}</span>
+              <span className="mono !text-[0.6rem] text-rose">{p.pill}</span>
+            </div>
+            <h3 className="text-2xl leading-tight">{p.title}</h3>
+            <p className="text-sm text-ink/80">{p.meta}</p>
+            <p className="text-sm text-muted">{p.who}</p>
+            <a href={mailto(p.subject)} className="text-sm text-rose hover:underline mt-auto pt-1">Hablemos de este formato ↗</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+/* ---------- 04 SOBRE ---------- */
+export const Sobre: React.FC = () => (
+  <div className="max-w-4xl grid lg:grid-cols-12 gap-8 lg:gap-12">
+    <div className="lg:col-span-7">
+      <Eyebrow>04 / Sobre Mara Schmitman</Eyebrow>
+      <H2>Criterio forjado en <em>el terreno</em><span className="dot">.</span></H2>
+      <p className="text-ink/85 leading-relaxed mt-5">
+        Soy Licenciada en Psicología, con posgrado en Gestión Estratégica de Tecnología, y especialista en diseño organizacional.
+        Desde 2008 armo equipos y diseño organizaciones, sentada del lado de quien decide a quién se contrata. Abro este espacio,
+        individual y grupal, para que ese criterio les sirva directamente a las personas que necesitan entrar al mercado o cambiar de rumbo.
+      </p>
+      <dl className="grid grid-cols-2 gap-x-6 gap-y-3 mt-6 pt-5 border-t hairline text-sm">
+        <div><dt className="mono">Formación</dt><dd className="mt-0.5">Lic. en Psicología</dd></div>
+        <div><dt className="mono">Especialidad</dt><dd className="mt-0.5">Diseño organizacional</dd></div>
+        <div><dt className="mono">Base</dt><dd className="mt-0.5">Tigre, Buenos Aires (sesiones remotas)</dd></div>
+        <div><dt className="mono">Perfil</dt><dd className="mt-0.5"><a href={LINKEDIN} target="_blank" rel="noopener" className="text-rose hover:underline">LinkedIn ↗</a></dd></div>
+      </dl>
+    </div>
+    <figure className="lg:col-span-5 card p-6 flex flex-col justify-center gap-4 bg-white/45">
+      <p className="mono text-sage">Hechos, no adjetivos</p>
+      <p className="font-serif text-2xl leading-snug text-ink/90">
+        “Un perfil profesional sólido no se construye decorando adjetivos, sino ordenando los problemas que resolviste y demostrando qué valor concreto aportás.”
+      </p>
+      <figcaption className="flex items-center gap-3 pt-1">
+        <img src={mara} alt="Mara Schmitman" className="w-10 h-10 rounded-full object-cover" />
+        <span className="text-sm">Mara Schmitman</span>
+      </figcaption>
+    </figure>
+  </div>
+);
+
+/* ---------- 05 FAQ ---------- */
+export const Faq: React.FC = () => (
+  <div className="max-w-2xl">
+    <Eyebrow>05 / Preguntas frecuentes</Eyebrow>
+    <H2>Dudas y <em>aclaraciones</em><span className="dot">.</span></H2>
+    <div className="mt-6 divide-y hairline border-y">
+      {FAQ.map((x, i) => (
+        <details key={x.q} open={i === 0} className="group py-3">
+          <summary className="flex gap-3 items-baseline font-serif text-xl text-ink">
+            <span className="mono shrink-0">0{i + 1}</span>
+            <span className="flex-1">{x.q}</span>
+            <span className="text-rose font-mono text-sm group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p className="pl-9 pt-2 text-sm text-ink/80 leading-relaxed">{x.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+);
+
+/* ---------- 06 HABLEMOS ---------- */
+export const Hablemos: React.FC = () => (
+  <div className="max-w-2xl">
+    <Eyebrow>06 / Contacto directo</Eyebrow>
+    <h2 className="text-6xl sm:text-7xl leading-none mt-3">Hablemos<span className="dot">.</span></h2>
+    <p className="text-ink/75 mt-5 max-w-md">
+      Contame en qué momento estás y pasame tu LinkedIn o CV. Te respondo personalmente en 24 a 48 hs hábiles.
+    </p>
+    <div className="mt-7 flex flex-wrap items-center gap-4">
+      <a href={mailto('Consulta de carrera')} className="btn btn-dark pixel-border-soft text-base px-6">Escribime a {EMAIL} →</a>
+      <a href={LINKEDIN} target="_blank" rel="noopener" className="text-sm text-ink/75 hover:text-rose">LinkedIn ↗</a>
+    </div>
+    <p className="mono mt-10">© 2026 Mara Schmitman. Tigre, Buenos Aires.</p>
+  </div>
+);
