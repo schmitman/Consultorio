@@ -9,7 +9,7 @@ const H2: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 
 /* ---------- 00 PORTADA ---------- */
 export const Portada: React.FC<{ go: (id: 'termometro' | 'caminos') => void }> = ({ go }) => (
-  <div className="max-w-2xl">
+  <div className="max-w-[640px]">
     <Eyebrow>Lic. en Psicología &amp; diseño organizacional</Eyebrow>
     <h1 className="text-6xl sm:text-7xl lg:text-[5.5rem] leading-[0.98] mt-4">
       Estrategia de<br /><em>carrera</em><span className="dot">.</span>
@@ -18,11 +18,11 @@ export const Portada: React.FC<{ go: (id: 'termometro' | 'caminos') => void }> =
       Consultorías individuales y grupales para entrar al mercado laboral o cambiar de rumbo con bases firmes.
     </p>
     <div className="flex flex-wrap gap-3 mt-7">
-      <a href={mailto('Consulta de carrera')} className="btn btn-dark pixel-border-soft">Hablemos →</a>
-      <button onClick={() => go('termometro')} className="btn btn-line">Diagnóstico de 2 minutos</button>
+      <a href={mailto('Consulta de carrera')} className="btn btn-dark">Hablemos →</a>
+      <button onClick={() => go('termometro')} className="btn-link">Diagnóstico de 2 minutos</button>
     </div>
     <p className="mt-8 text-sm text-muted">
-      <span className="font-serif text-2xl text-ink mr-2">18+ años</span> armando equipos, del lado de quien decide a quién se contrata.
+      <span className="font-semibold text-ink">18+ años</span> armando equipos, del lado de quien decide a quién se contrata.
     </p>
   </div>
 );
@@ -48,8 +48,8 @@ export const Caminos: React.FC = () => (
               ))}
             </ul>
             <div className="flex flex-wrap gap-2 mt-auto pt-2">
-              <a href={c.cta1} className="btn btn-dark !py-2 !min-h-0 text-xs">1 a 1</a>
-              <a href={c.cta2} className="btn btn-line !py-2 !min-h-0 text-xs">Grupal (4 a 6)</a>
+              <a href={c.cta1} className="btn btn-dark text-xs">1 a 1</a>
+              <a href={c.cta2} className="btn-link text-xs">Grupal (4 a 6)</a>
             </div>
           </article>
         );
@@ -72,25 +72,26 @@ export const Programas: React.FC = () => {
           <Eyebrow>02 / Modalidades</Eyebrow>
           <H2>Formatos y <em>programas</em><span className="dot">.</span></H2>
         </div>
-        <div className="flex gap-2" role="group" aria-label="Filtrar programas">
+        <div className="flex gap-7" role="group" aria-label="Filtrar programas">
           {F.map((x) => (
-            <button key={x.k} onClick={() => setF(x.k)} className={`btn !py-1.5 !min-h-0 text-xs ${f === x.k ? 'btn-dark' : 'btn-line'}`}>{x.label}</button>
+            <button key={x.k} onClick={() => setF(x.k)} aria-pressed={f === x.k} className="tab">{x.label}</button>
           ))}
         </div>
       </div>
-      <div className="grid sm:grid-cols-2 gap-3 mt-7">
-        {list.map((p) => (
-          <article key={p.title} className="card p-5 flex flex-col gap-2 bg-white/55">
-            <div className="flex justify-between gap-2">
-              <span className="mono">{p.num}</span>
-              <span className="mono !text-[0.6rem] text-rose">{p.pill}</span>
-            </div>
-            <h3 className="text-2xl leading-tight">{p.title}</h3>
-            <p className="text-sm text-ink/80">{p.meta}</p>
-            <p className="text-sm text-muted">{p.who}</p>
-            <a href={mailto(p.subject)} className="text-sm text-rose hover:underline mt-auto pt-1">Hablemos de este formato ↗</a>
-          </article>
-        ))}
+      <div className="mt-7 border-b border-ink/12">
+        {list.map((p) => {
+          const [n, modo] = p.num.split(' / ');
+          return (
+            <article key={p.title} className="grid grid-cols-[44px_1fr] sm:grid-cols-[64px_1fr_auto] items-baseline gap-x-5 sm:gap-x-7 pt-5 pb-[18px] border-t border-ink/12">
+              <span className="font-serif font-normal text-[2.5rem] sm:text-[3.25rem] leading-[0.8] text-ink/45 [font-variant-numeric:lining-nums]">{n}</span>
+              <div>
+                <h3 className="text-2xl sm:text-[1.65rem] leading-[1.15]">{p.title}</h3>
+                <p className="mt-1.5 text-sm text-ink/70">{modo} · {p.meta}</p>
+              </div>
+              <a href={mailto(p.subject)} className="col-start-2 sm:col-start-auto mt-2 sm:mt-0 text-sm text-rose whitespace-nowrap underline decoration-1 underline-offset-[5px] decoration-rose/35 hover:decoration-rose">Hablemos de este formato ↗</a>
+            </article>
+          );
+        })}
       </div>
     </div>
   );
@@ -156,7 +157,7 @@ export const Hablemos: React.FC = () => (
       Contame en qué momento estás y pasame tu LinkedIn o CV. Te respondo personalmente en 24 a 48 hs hábiles.
     </p>
     <div className="mt-7 flex flex-wrap items-center gap-4">
-      <a href={mailto('Consulta de carrera')} className="btn btn-dark pixel-border-soft text-base px-6">Escribime a {EMAIL} →</a>
+      <a href={mailto('Consulta de carrera')} className="btn btn-dark text-base px-6">Escribime a {EMAIL} →</a>
       <a href={LINKEDIN} target="_blank" rel="noopener" className="text-sm text-ink/75 hover:text-rose">LinkedIn ↗</a>
     </div>
     <p className="mono mt-10">© 2026 Mara Schmitman. Tigre, Buenos Aires.</p>

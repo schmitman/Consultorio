@@ -73,8 +73,8 @@ export const Termometro: React.FC = () => {
             </p>
             <p className="text-sm text-muted">Es una orientación inicial; lo confirmamos cuando leo tu caso.</p>
             <div className="flex flex-wrap gap-3 pt-2">
-              <a href={resultMailto(result.name)} className="btn btn-dark pixel-border-soft">Contarle mi caso a Mara →</a>
-              <button type="button" onClick={reset} className="btn btn-line">Volver a empezar</button>
+              <a href={resultMailto(result.name)} className="btn btn-dark">Contarle mi caso a Mara →</a>
+              <button type="button" onClick={reset} className="btn-link">Volver a empezar</button>
             </div>
           </div>
         )}

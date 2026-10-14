@@ -35,10 +35,21 @@
     url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
 }
 
-/* Etiquetas en mono, mayúsculas, como en el sitio actual */
+/* Etiquetas: sans en mayúsculas chicas con tracking */
 .mono {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Números y datos del menú lateral: siguen en mono */
+.mono-nav {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.6rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-muted);
@@ -48,21 +59,36 @@
 h1 em, h2 em, h3 em { font-style: italic; color: var(--color-rose); }
 .dot { color: var(--color-rose); }
 
-/* Botones con borde pixelado suave (único rastro del pixel art) */
+/* Botones planos, esquinas rectas, 44px de alto */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
-  padding: 0.7rem 1.1rem; font-size: 0.875rem; font-weight: 500; border-radius: 2px;
+  height: 44px; padding: 0 1.1rem; font-size: 0.875rem; font-weight: 500; border-radius: 0;
   transition: background-color .15s, color .15s, border-color .15s;
-  min-height: 44px;
 }
 .btn-dark { background: var(--color-ink); color: var(--color-paper); }
 .btn-dark:hover { background: var(--color-rose-deep); }
 .btn-rose { background: var(--color-rose); color: var(--color-paper); }
 .btn-rose:hover { background: var(--color-rose-deep); }
-.btn-line { background: rgba(255,255,255,0.55); color: var(--color-ink); border: 1px solid rgba(45,47,40,0.2); }
-.btn-line:hover { border-color: var(--color-rose); color: var(--color-rose); background: #fff; }
-.pixel-border-soft {
-  box-shadow: -2px 0 0 0 rgba(45,47,40,0.12), 2px 0 0 0 rgba(45,47,40,0.12), 0 -2px 0 0 rgba(45,47,40,0.12), 0 2px 0 0 rgba(45,47,40,0.12);
+
+/* Acción secundaria: link de texto con subrayado fino rosa */
+.btn-link {
+  display: inline-flex; align-items: center; height: 44px; padding: 0 0.5rem;
+  font-size: 0.875rem; font-weight: 500; color: var(--color-ink);
+  text-decoration: underline; text-decoration-color: var(--color-rose);
+  text-decoration-thickness: 1px; text-underline-offset: 5px;
+  transition: color .15s;
+}
+.btn-link:hover { color: var(--color-rose); }
+
+/* Pestañas de texto (filtros): subrayado rosa en la activa */
+.tab {
+  position: relative; display: inline-flex; align-items: center; height: 44px;
+  font-size: 0.875rem; font-weight: 500; color: var(--color-muted); transition: color .15s;
+}
+.tab:hover { color: var(--color-ink); }
+.tab[aria-pressed="true"] { color: var(--color-ink); }
+.tab[aria-pressed="true"]::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 10px; height: 1.5px; background: var(--color-rose);
 }
 
 /* Tarjeta de papel: blanco lavado, borde fino, sin sombra dura */
