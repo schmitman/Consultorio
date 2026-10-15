@@ -27,7 +27,7 @@ export const Meadow: React.FC = () => {
         style={{
           maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 40%, black 75%)',
           WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 40%, black 75%)',
-          filter: 'grayscale(1) contrast(0.92) brightness(1.03)',
+          filter: 'saturate(0.3) contrast(0.9) brightness(1.04)',
         }}
       />
     </div>
