@@ -4,6 +4,17 @@ const pradoLupinos = `${import.meta.env.BASE_URL}img/prado-lupinos.jpg`;
 // Prado de lupinos fijo al pie de la ventana, detrás del contenido. Se desplaza unos píxeles con el mouse; nada más.
 export const Meadow: React.FC = () => {
   const ref = useRef<HTMLImageElement | null>(null);
+  const wrap = useRef<HTMLDivElement | null>(null);
+
+  // En las vistas que scrollean (Sobre Mara), el prado se desvanece al bajar para que el texto se lea
+  useEffect(() => {
+    const el = wrap.current;
+    if (!el) return;
+    const onScroll = () => { el.style.opacity = String(Math.max(0.1, 1 - window.scrollY / 350)); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
@@ -18,7 +29,7 @@ export const Meadow: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-0 pointer-events-none overflow-hidden h-[32vh] lg:h-[40vh] lg:left-60" aria-hidden="true">
+    <div ref={wrap} className="fixed inset-x-0 bottom-0 z-0 pointer-events-none overflow-hidden h-[32vh] lg:h-[40vh] lg:left-60 transition-opacity duration-300" aria-hidden="true">
       <img
         ref={ref}
         src={pradoLupinos}

@@ -109,7 +109,10 @@ export const COLUMNAS: Aparicion[] = [
 export const CHARLAS: Aparicion[] = [
   { fecha: '2026-10-20', tipo: 'Charla', medio: 'SAIAConf 2026', titulo: 'Panel «El futuro del trabajo: donde la IA nunca va a reemplazarnos»', url: 'https://saiaconf.ar/#entradas', detalle: '12:15 · Escenario Horizonte · Costa Salguero, CABA' },
   { fecha: '2026-10-04', tipo: 'Podcast', medio: 'Es Más Complejo, con Nico Lucca', titulo: '¿Sirve la IA para encontrar empleo?', url: 'https://www.youtube.com/watch?v=yNsbiTsJU9s' },
+  { fecha: '2026-09-23', tipo: 'Podcast', medio: 'Radio Con Vos · Invento Argentino', titulo: 'Inteligencia artificial: ¿contra el amor y el trabajo?', url: 'https://www.youtube.com/watch?v=lPoQdj4Efl0' },
+  { fecha: '2026-09-17', tipo: 'Podcast', medio: 'Builders OFF the Record #15', titulo: 'El mercado laboral tech, con Gabriel Benmergui', url: 'https://www.youtube.com/watch?v=f03ClvJUguQ&t=2261s' },
   { fecha: '2026-08-03', tipo: 'Video', medio: 'Funky Business', titulo: 'Entrevista: psicología y gestión estratégica de recursos humanos', url: 'https://www.youtube.com/watch?v=oJ5tCCuQ7fk' },
+  { fecha: '2026-08-01', tipo: 'Video', medio: 'Eco Medios · Nada Personal', titulo: 'Entrevista en Nada Personal', url: 'https://www.youtube.com/watch?v=aMrKrJJtd3g' },
   { fecha: '2024-07-16', tipo: 'Video', medio: 'Pelado Nerd', titulo: 'Las nuevas tecnologías en el mundo de IT', url: 'https://www.youtube.com/watch?v=QxEf9yJVE6Y' },
   { fecha: '2022-08-16', tipo: 'Nota', medio: 'La Nación', titulo: 'Entrevista laboral: los errores que nos dejan fuera de carrera', url: 'https://www.lanacion.com.ar/sociedad/entrevista-laboral-los-errores-que-nos-dejan-fuera-de-carrera-y-una-pregunta-clave-que-suele-nid16082022/' },
   { fecha: '2021-05-11', tipo: 'Video', medio: 'Pelado Nerd', titulo: 'Consejos para conseguir tu primer trabajo en IT', url: 'https://www.youtube.com/watch?v=BctKQ6HX1eI' },
