@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Portada, Caminos, Programas, Sobre, Prensa, Faq, Hablemos } from './components/Sections';
+import { Portada, Caminos, Programas, Sobre, Faq, Hablemos } from './components/Sections';
 import { Termometro } from './components/Termometro';
 import { Meadow } from './components/Meadow';
 import { EMAIL } from './content';
@@ -11,14 +11,14 @@ const VIEWS = [
   { id: 'programas', label: 'Programas', num: '02' },
   { id: 'termometro', label: 'Diagnóstico', num: '03' },
   { id: 'sobre', label: 'Sobre Mara', num: '04' },
-  { id: 'prensa', label: 'Prensa', num: '05' },
-  { id: 'faq', label: 'FAQ', num: '06' },
-  { id: 'contacto', label: 'Hablemos', num: '07' },
+  { id: 'faq', label: 'FAQ', num: '05' },
+  { id: 'contacto', label: 'Hablemos', num: '06' },
 ] as const;
 type ViewId = (typeof VIEWS)[number]['id'];
 
 const fromHash = (): ViewId => {
   const h = window.location.hash.replace('#', '');
+  if (h === 'prensa') return 'sobre'; // la prensa vive dentro de Sobre Mara
   return (VIEWS.some((v) => v.id === h) ? h : 'inicio') as ViewId;
 };
 
@@ -43,7 +43,6 @@ export default function App() {
     programas: <Programas />,
     termometro: <Termometro />,
     sobre: <Sobre />,
-    prensa: <Prensa />,
     faq: <Faq />,
     contacto: <Hablemos />,
   };
