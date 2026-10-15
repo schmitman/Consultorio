@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CAMINOS, PROGRAMAS, FAQ, LINKEDIN, EMAIL, mailto, type Mode } from '../content';
 const nombreAMano = `${import.meta.env.BASE_URL}img/nombre-mara-schmitman.png`; // nombre escrito a mano por Mara
+const retrato = `${import.meta.env.BASE_URL}img/mara-schmitman.png`; // retrato sin fondo; se funde en el papel
 
 const Eyebrow: React.FC<{ children: React.ReactNode }> = ({ children }) => <p className="mono">{children}</p>;
 const H2: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -9,6 +10,7 @@ const H2: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 
 /* ---------- 00 PORTADA ---------- */
 export const Portada: React.FC<{ go: (id: 'termometro' | 'caminos') => void }> = ({ go }) => (
+  <div className="flex flex-col-reverse lg:flex-row lg:items-center gap-6 lg:gap-24">
   <div className="max-w-[640px]">
     <Eyebrow>Mara Schmitman · Lic. en Psicología &amp; diseño organizacional</Eyebrow>
     <h1 className="text-6xl sm:text-7xl lg:text-[5.5rem] leading-[0.98] mt-4">
@@ -24,6 +26,12 @@ export const Portada: React.FC<{ go: (id: 'termometro' | 'caminos') => void }> =
     <p className="mt-8 text-sm text-muted">
       <span className="font-semibold text-ink">18+ años</span> armando equipos, del lado de quien decide a quién se contrata.
     </p>
+  </div>
+  <img
+    src={retrato}
+    alt="Mara Schmitman"
+    className="w-[120px] lg:w-[250px] shrink-0 [mask-image:linear-gradient(#000_72%,transparent_98%)]"
+  />
   </div>
 );
 
