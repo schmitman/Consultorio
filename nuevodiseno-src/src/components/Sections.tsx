@@ -30,27 +30,27 @@ export const Portada: React.FC<{ go: (id: 'termometro' | 'caminos') => void }> =
 
 /* ---------- 01 CAMINOS ---------- */
 export const Caminos: React.FC = () => (
-  <div className="max-w-4xl">
+  <div className="max-w-5xl">
     <Eyebrow>01 / Dos caminos</Eyebrow>
     <H2>¿Cuál es tu momento de <em>carrera</em><span className="dot">?</span></H2>
     <p className="text-ink mt-3 max-w-xl">Conseguir el primer trabajo y cambiar de rumbo piden estrategias distintas, porque el mercado mira cosas distintas en cada caso.</p>
-    <div className="grid md:grid-cols-2 gap-4 mt-8">
+    <div className="grid md:grid-cols-2 gap-8 md:gap-14 mt-8">
       {(['a', 'b'] as const).map((k) => {
         const c = CAMINOS[k];
         return (
-          <article key={k} className="card p-5 sm:p-6 flex flex-col gap-3 bg-white/55">
+          <article key={k} className="flex flex-col gap-3 pt-5 border-t border-ink/12">
             <span className="mono text-rose">{c.tab} · {c.tag}</span>
             <h3 className="text-2xl sm:text-3xl leading-tight">{c.title}</h3>
-            <p className="text-sm text-ink">{c.text}</p>
-            <ul className="text-sm text-ink space-y-1.5 mt-1">
-              <li className="mono !text-[0.6rem]">Las trampas más frecuentes</li>
+            <p className="text-base text-ink">{c.text}</p>
+            <ul className="text-base text-ink space-y-2 mt-1">
+              <li className="mono">Las trampas más frecuentes</li>
               {c.traps.map((t) => (
                 <li key={t} className="flex gap-2"><span className="text-muted shrink-0">×</span>{t}</li>
               ))}
             </ul>
             <div className="flex flex-wrap gap-2 mt-auto pt-2">
-              <a href={c.cta1} className="btn btn-dark text-xs">1 a 1</a>
-              <a href={c.cta2} className="btn-link text-xs">Grupal (4 a 6)</a>
+              <a href={c.cta1} className="btn btn-dark">1 a 1</a>
+              <a href={c.cta2} className="btn-link">Grupal (4 a 6)</a>
             </div>
           </article>
         );
@@ -192,15 +192,15 @@ export const Faq: React.FC = () => (
   <div className="max-w-2xl">
     <Eyebrow>06 / Preguntas frecuentes</Eyebrow>
     <H2>Dudas y <em>aclaraciones</em><span className="dot">.</span></H2>
-    <div className="mt-6 divide-y hairline border-y">
+    <div className="mt-6 divide-y divide-ink/12 border-y border-ink/12">
       {FAQ.map((x, i) => (
         <details key={x.q} open={i === 0} className="group py-3">
           <summary className="flex gap-3 items-baseline font-serif text-xl text-ink">
             <span className="mono shrink-0">0{i + 1}</span>
             <span className="flex-1">{x.q}</span>
-            <span className="text-ink text-sm group-open:rotate-45 transition-transform">+</span>
+            <span className="text-ink text-xl leading-none group-open:rotate-45 transition-transform">+</span>
           </summary>
-          <p className="pl-9 pt-2 text-sm text-ink leading-relaxed">{x.a}</p>
+          <p className="pl-9 pt-2 text-base text-ink leading-relaxed">{x.a}</p>
         </details>
       ))}
     </div>
