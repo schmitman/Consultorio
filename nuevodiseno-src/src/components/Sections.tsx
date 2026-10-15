@@ -10,7 +10,7 @@ const H2: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 /* ---------- 00 PORTADA ---------- */
 export const Portada: React.FC<{ go: (id: 'termometro' | 'caminos') => void }> = ({ go }) => (
   <div className="max-w-[640px]">
-    <Eyebrow>Lic. en Psicología &amp; diseño organizacional</Eyebrow>
+    <Eyebrow>Mara Schmitman · Lic. en Psicología &amp; diseño organizacional</Eyebrow>
     <h1 className="text-6xl sm:text-7xl lg:text-[5.5rem] leading-[0.98] mt-4">
       Estrategia de<br /><em>carrera</em><span className="dot">.</span>
     </h1>
