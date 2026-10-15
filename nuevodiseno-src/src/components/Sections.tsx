@@ -104,12 +104,12 @@ const fecha = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); r
 const hoy = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 
 const Fila: React.FC<{ a: Aparicion }> = ({ a }) => (
-  <li className="py-3 border-t border-ink/12">
-    <p className="text-xs text-muted">{fecha(a.fecha)} · {a.medio}</p>
+  <li className="py-4 border-t border-ink/12">
+    <p className="text-sm text-muted">{fecha(a.fecha)} · {a.medio}</p>
     {a.url ? (
-      <a href={a.url} target="_blank" rel="noopener" className="block mt-1 font-serif text-lg leading-snug text-ink hover:underline decoration-1 underline-offset-4">{a.titulo}&nbsp;<span className="font-sans text-sm text-muted">↗</span></a>
+      <a href={a.url} target="_blank" rel="noopener" className="block mt-1 font-serif font-medium text-[1.375rem] leading-[1.25] text-ink hover:underline decoration-1 underline-offset-4">{a.titulo}&nbsp;<span className="font-sans text-sm text-muted">↗</span></a>
     ) : (
-      <p className="mt-1 font-serif text-lg leading-snug text-ink">{a.titulo}</p>
+      <p className="mt-1 font-serif font-medium text-[1.375rem] leading-[1.25] text-ink">{a.titulo}</p>
     )}
   </li>
 );
@@ -132,8 +132,8 @@ const EnLosMedios: React.FC = () => {
       {proximas.map((a) => (
         <div key={a.fecha + a.titulo} className="mt-6 pl-4 border-l-2 border-green">
           <p className="mono !text-green">Próxima · {fecha(a.fecha)} · {a.medio}</p>
-          <p className="mt-1 font-serif text-xl leading-snug text-ink">{a.titulo}</p>
-          <p className="mt-1 text-sm text-muted">
+          <p className="mt-1 font-serif font-medium text-[1.625rem] leading-[1.2] text-ink">{a.titulo}</p>
+          <p className="mt-2 text-base text-muted">
             {a.detalle}
             {a.url && <> · <a href={a.url} target="_blank" rel="noopener" className="text-ink underline decoration-1 underline-offset-4 hover:decoration-green">Entradas ↗</a></>}
           </p>
