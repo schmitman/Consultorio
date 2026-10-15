@@ -97,7 +97,7 @@ export const FAQ = [
 ];
 
 // Prensa y charlas. Las fechas futuras se muestran como "Próximas"; cuando pasan, se mueven solas a la lista.
-export type Aparicion = { fecha: string; tipo: 'Columna' | 'Charla' | 'Podcast' | 'Video' | 'Nota'; medio: string; titulo: string; url?: string };
+export type Aparicion = { fecha: string; tipo: 'Columna' | 'Charla' | 'Podcast' | 'Video' | 'Nota'; medio: string; titulo: string; url?: string; detalle?: string };
 
 export const COLUMNAS: Aparicion[] = [
   { fecha: '2026-08-29', tipo: 'Columna', medio: 'El Cronista', titulo: 'El riesgo “menos visible” de la IA: una generación que revisa sin haber aprendido a hacer', url: 'https://www.cronista.com/columnistas/el-riesgo-menos-visible-de-la-ia-una-generacion-que-revisa-sin-haber-aprendido-a-hacer/' },
@@ -107,7 +107,7 @@ export const COLUMNAS: Aparicion[] = [
 ];
 
 export const CHARLAS: Aparicion[] = [
-  { fecha: '2026-10-20', tipo: 'Charla', medio: 'SAIA · Sociedad Argentina de IA', titulo: 'Charla en SAIA' },
+  { fecha: '2026-10-20', tipo: 'Charla', medio: 'SAIAConf 2026', titulo: 'Panel «El futuro del trabajo: donde la IA nunca va a reemplazarnos»', url: 'https://saiaconf.ar/#entradas', detalle: '12:15 · Escenario Horizonte · Costa Salguero, CABA' },
   { fecha: '2026-10-04', tipo: 'Podcast', medio: 'Es Más Complejo, con Nico Lucca', titulo: '¿Sirve la IA para encontrar empleo?', url: 'https://www.youtube.com/watch?v=yNsbiTsJU9s' },
   { fecha: '2026-08-03', tipo: 'Video', medio: 'Funky Business', titulo: 'Entrevista: psicología y gestión estratégica de recursos humanos', url: 'https://www.youtube.com/watch?v=oJ5tCCuQ7fk' },
   { fecha: '2024-07-16', tipo: 'Video', medio: 'Pelado Nerd', titulo: 'Las nuevas tecnologías en el mundo de IT', url: 'https://www.youtube.com/watch?v=QxEf9yJVE6Y' },

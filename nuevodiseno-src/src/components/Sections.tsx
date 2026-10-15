@@ -169,17 +169,16 @@ export const Prensa: React.FC = () => {
     <div className="max-w-4xl">
       <Eyebrow>05 / Prensa y charlas</Eyebrow>
       <H2>En los <em>medios</em><span className="dot">.</span></H2>
-      {proximas.length > 0 && (
-        <div className="mt-6 flex flex-col gap-2">
-          {proximas.map((a) => (
-            <p key={a.fecha + a.titulo} className="flex flex-wrap items-baseline gap-x-3 text-ink">
-              <span className="mono !text-green">Próxima</span>
-              <span className="font-serif text-xl">{fecha(a.fecha)} · {a.medio}</span>
-              {a.url && <a href={a.url} target="_blank" rel="noopener" className="btn-link !h-auto !px-0">Inscripción ↗</a>}
-            </p>
-          ))}
+      {proximas.map((a) => (
+        <div key={a.fecha + a.titulo} className="mt-6 pl-4 border-l-2 border-green">
+          <p className="mono !text-green">Próxima · {fecha(a.fecha)} · {a.medio}</p>
+          <p className="mt-1 font-serif text-xl leading-snug text-ink">{a.titulo}</p>
+          <p className="mt-1 text-sm text-muted">
+            {a.detalle}
+            {a.url && <> · <a href={a.url} target="_blank" rel="noopener" className="text-ink underline decoration-1 underline-offset-4 hover:decoration-green">Entradas ↗</a></>}
+          </p>
         </div>
-      )}
+      ))}
       <div className="grid md:grid-cols-2 gap-8 md:gap-12 mt-7">
         <Lista titulo="Columnas" items={COLUMNAS} />
         <Lista titulo="Charlas y entrevistas" items={charlas} />
