@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CAMINOS, PROGRAMAS, FAQ, LINKEDIN, EMAIL, mailto, type Mode } from '../content';
+import { CAMINOS, PROGRAMAS, FAQ, LINKEDIN, EMAIL, COLUMNAS, CHARLAS, mailto, type Mode, type Aparicion } from '../content';
 const nombreAMano = `${import.meta.env.BASE_URL}img/nombre-mara-schmitman.png`; // nombre escrito a mano por Mara
 const retrato = `${import.meta.env.BASE_URL}img/mara-schmitman.png`; // retrato sin fondo, sobre un tono neutro
 
@@ -124,6 +124,7 @@ export const Sobre: React.FC = () => (
         <div><dt className="mono">Base</dt><dd className="mt-0.5">Tigre, Buenos Aires (sesiones remotas)</dd></div>
         <div><dt className="mono">Perfil</dt><dd className="mt-0.5"><a href={LINKEDIN} target="_blank" rel="noopener" className="text-rose hover:underline">LinkedIn ↗</a></dd></div>
       </dl>
+      <a href="#prensa" className="btn-link -ml-2 mt-3">Prensa y charlas →</a>
     </div>
     <figure className="lg:col-span-5 card p-6 flex flex-col justify-center gap-4 bg-white/45">
       <p className="mono text-sage">Hechos, no adjetivos</p>
@@ -137,10 +138,60 @@ export const Sobre: React.FC = () => (
   </div>
 );
 
-/* ---------- 05 FAQ ---------- */
+/* ---------- 05 PRENSA ---------- */
+const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+const fecha = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${MESES[m - 1]} ${y}`; };
+const hoy = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+
+const Fila: React.FC<{ a: Aparicion }> = ({ a }) => (
+  <li className="py-3 border-t border-ink/12">
+    <p className="text-xs text-muted">{fecha(a.fecha)} · {a.medio}</p>
+    {a.url ? (
+      <a href={a.url} target="_blank" rel="noopener" className="block mt-1 font-serif text-lg leading-snug text-ink hover:underline decoration-1 underline-offset-4">{a.titulo}&nbsp;<span className="font-sans text-sm text-muted">↗</span></a>
+    ) : (
+      <p className="mt-1 font-serif text-lg leading-snug text-ink">{a.titulo}</p>
+    )}
+  </li>
+);
+
+const Lista: React.FC<{ titulo: string; items: Aparicion[] }> = ({ titulo, items }) => (
+  <div>
+    <p className="mono mb-2">{titulo}</p>
+    <ul className="border-b border-ink/12">{items.map((a) => <Fila key={a.fecha + a.titulo} a={a} />)}</ul>
+  </div>
+);
+
+export const Prensa: React.FC = () => {
+  const h = hoy();
+  const proximas = CHARLAS.filter((a) => a.fecha >= h).sort((x, y) => x.fecha.localeCompare(y.fecha));
+  const charlas = CHARLAS.filter((a) => a.fecha < h);
+  return (
+    <div className="max-w-4xl">
+      <Eyebrow>05 / Prensa y charlas</Eyebrow>
+      <H2>En los <em>medios</em><span className="dot">.</span></H2>
+      {proximas.length > 0 && (
+        <div className="mt-6 flex flex-col gap-2">
+          {proximas.map((a) => (
+            <p key={a.fecha + a.titulo} className="flex flex-wrap items-baseline gap-x-3 text-ink">
+              <span className="mono !text-green">Próxima</span>
+              <span className="font-serif text-xl">{fecha(a.fecha)} · {a.medio}</span>
+              {a.url && <a href={a.url} target="_blank" rel="noopener" className="btn-link !h-auto !px-0">Inscripción ↗</a>}
+            </p>
+          ))}
+        </div>
+      )}
+      <div className="grid md:grid-cols-2 gap-8 md:gap-12 mt-7">
+        <Lista titulo="Columnas" items={COLUMNAS} />
+        <Lista titulo="Charlas y entrevistas" items={charlas} />
+      </div>
+    </div>
+  );
+};
+
+/* ---------- 06 FAQ ---------- */
 export const Faq: React.FC = () => (
   <div className="max-w-2xl">
-    <Eyebrow>05 / Preguntas frecuentes</Eyebrow>
+    <Eyebrow>06 / Preguntas frecuentes</Eyebrow>
     <H2>Dudas y <em>aclaraciones</em><span className="dot">.</span></H2>
     <div className="mt-6 divide-y hairline border-y">
       {FAQ.map((x, i) => (
@@ -157,10 +208,10 @@ export const Faq: React.FC = () => (
   </div>
 );
 
-/* ---------- 06 HABLEMOS ---------- */
+/* ---------- 07 HABLEMOS ---------- */
 export const Hablemos: React.FC = () => (
   <div className="max-w-2xl">
-    <Eyebrow>06 / Contacto directo</Eyebrow>
+    <Eyebrow>07 / Contacto directo</Eyebrow>
     <h2 className="text-6xl sm:text-7xl leading-none mt-3">Hablemos<span className="dot">.</span></h2>
     <p className="text-ink mt-5 max-w-md">
       Contame en qué momento estás y pasame tu LinkedIn o CV. Te respondo personalmente en 24 a 48 hs hábiles.
