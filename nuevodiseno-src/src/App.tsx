@@ -50,25 +50,25 @@ export default function App() {
     <div className="min-h-dvh watercolor-paper-bg selection:bg-rose/20 lg:flex">
       {/* Menú lateral (desktop) */}
       <aside className="hidden lg:flex flex-col w-60 shrink-0 h-dvh sticky top-0 px-8 py-8 border-r hairline bg-paper/60">
-        <button onClick={() => go('inicio')} className="font-serif text-3xl text-ink text-left leading-none" aria-label="Inicio">
+        <button onClick={() => go('inicio')} className="font-serif text-[2.75rem] font-medium tracking-[-0.02em] text-ink text-left leading-[0.9]" aria-label="Inicio">
           MS<span className="dot">.</span>
         </button>
-        <nav className="mt-12 flex flex-col gap-1" aria-label="Secciones">
+        <nav className="mt-9 flex flex-col gap-1" aria-label="Secciones">
           {VIEWS.map((v) => (
             <button
               key={v.id}
               onClick={() => go(v.id)}
               aria-current={view === v.id ? 'page' : undefined}
-              className={`flex items-baseline gap-3 py-2 text-left transition-colors ${view === v.id ? 'text-rose' : 'text-ink/70 hover:text-ink'}`}
+              className={`flex items-baseline gap-3 py-2 text-left transition-colors ${view === v.id ? 'text-ink' : 'text-muted hover:text-ink'}`}
             >
-              <span className="mono !text-[0.6rem]">{v.num}</span>
+              <span className="mono-nav">{v.num}</span>
               <span className="font-serif text-xl">{v.label}</span>
             </button>
           ))}
         </nav>
         <div className="mt-auto space-y-2 text-xs text-muted">
           <a href={`mailto:${EMAIL}`} className="hover:text-rose block">{EMAIL}</a>
-          <p className="mono !text-[0.6rem]">Tigre, Buenos Aires</p>
+          <p className="mono-nav">Tigre, Buenos Aires</p>
         </div>
       </aside>
 
@@ -83,8 +83,8 @@ export default function App() {
         {menuOpen && (
           <nav className="px-5 pb-4 flex flex-col" aria-label="Secciones">
             {VIEWS.map((v) => (
-              <button key={v.id} onClick={() => go(v.id)} className={`flex items-baseline gap-3 py-2.5 text-left ${view === v.id ? 'text-rose' : 'text-ink'}`}>
-                <span className="mono !text-[0.6rem]">{v.num}</span>
+              <button key={v.id} onClick={() => go(v.id)} className={`flex items-baseline gap-3 py-2.5 text-left ${view === v.id ? 'text-ink' : 'text-muted'}`}>
+                <span className="mono-nav">{v.num}</span>
                 <span className="font-serif text-xl">{v.label}</span>
               </button>
             ))}
@@ -94,7 +94,7 @@ export default function App() {
 
       {/* Contenido: una vista por vez */}
       <main className="relative z-10 flex-1 min-w-0 flex flex-col">
-        <div key={view} className="view-in flex-1 flex flex-col justify-center px-5 sm:px-10 lg:px-16 py-10 lg:py-16 pb-[26vh] lg:pb-[30vh]">
+        <div key={view} className={`view-in flex-1 flex flex-col justify-center px-5 sm:px-10 lg:px-16 py-10 lg:py-16 pb-[26vh] ${view === 'inicio' ? 'lg:pb-[40vh]' : 'lg:pb-[30vh]'}`}>
           {content[view]}
         </div>
       </main>
