@@ -4,7 +4,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/nuevodiseno/',
+  base: '/',
   build: {
     rollupOptions: {
       // React y lucide se cargan desde esm.sh (ver import map en index.html): el bundle queda chico y versionable como texto.

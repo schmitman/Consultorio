@@ -1,14 +1,15 @@
 # Sitio de consultoría de carrera · Mara Schmitman
 
-Sitio estático (HTML, CSS y JS, sin build). Se publica en Cloudflare Pages.
+maraschmitman.com, publicado con Cloudflare Pages desde la raíz de este repo (sin build en Cloudflare).
 
-## Publicar en Cloudflare Pages
-1. Cloudflare → Workers & Pages → Create → Pages → Connect to Git → elegir este repo.
-2. Framework preset: None. Build command: (vacío). Output directory: `/`.
-3. Custom domains → agregar el dominio.
+## Estructura
+- `nuevodiseno-src/`: código fuente (React + Vite + Tailwind v4). Acá se edita el sitio.
+- `index.html`, `assets/`, `img/`: el sitio compilado. **No se editan a mano**: los genera el workflow.
+- `_redirects`: los links viejos a `/nuevodiseno/` redirigen a la portada.
+- `anterior/`: versión anterior del sitio, guardada como respaldo (`noindex`, sin links desde el sitio nuevo).
 
-## Pendientes antes de publicar
-- `mara.jpg`: foto de Mara (cuadrada, se muestra en círculo de 72px en gris).
-- Imágenes: `flores.jpg` (Sobre Mara) y `hoja.jpg` (fondo del hero), fotos de Unsplash en escala de grises.
-- Precios en `index.html` (buscar "Precio: a definir").
-- Contacto: los botones "Hablemos" abren un mail a mara@schmitman.com (sin formulario).
+## Publicación
+Cada push que toque `nuevodiseno-src/` dispara `.github/workflows/nuevodiseno.yml`: revisa tipos, compila y commitea el resultado en la raíz. Cloudflare Pages publica cada rama en `<rama>.maraschmitman.pages.dev` y `main` en maraschmitman.com.
+
+## Contenido
+Textos, programas, preguntas frecuentes y prensa viven en `nuevodiseno-src/src/content.ts`.

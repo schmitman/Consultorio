@@ -1,6 +1,6 @@
 name: nuevodiseno
 
-# Compila nuevodiseno-src/ y commitea el resultado en nuevodiseno/, que es lo que sirve Cloudflare Pages.
+# Compila nuevodiseno-src/ y commitea el resultado en la raíz del repo, que es lo que sirve Cloudflare Pages en maraschmitman.com.
 on:
   push:
     paths:
@@ -39,19 +39,19 @@ jobs:
         working-directory: nuevodiseno-src
         run: npm run build
 
-      - name: Reemplazar nuevodiseno/ con el build
+      - name: Publicar el build en la raíz
         run: |
-          rm -rf nuevodiseno
-          cp -R nuevodiseno-src/dist nuevodiseno
+          rm -rf index.html assets img
+          cp -R nuevodiseno-src/dist/. .
 
       - name: Commitear el build
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add -A nuevodiseno
+          git add -A index.html assets img
           if git diff --cached --quiet; then
             echo "Sin cambios en el build."
           else
-            git commit -m "Build de nuevodiseno"
+            git commit -m "Build del sitio"
             git push
           fi
