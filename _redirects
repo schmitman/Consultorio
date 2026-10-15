@@ -1,0 +1,3 @@
+# El diseño nuevo pasó a la raíz: los links viejos a /nuevodiseno/ redirigen a la portada
+/nuevodiseno    /    301
+/nuevodiseno/*  /    301
