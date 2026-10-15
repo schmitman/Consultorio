@@ -1,7 +1,7 @@
 // Medición del sitio.
 // - Cloudflare Web Analytics se activa desde el panel de Cloudflare Pages (no requiere código).
 // - Google Analytics 4: pegar el ID de medición (G-XXXXXXX) en GA_ID. Vacío = no carga nada.
-export const GA_ID = '';
+export const GA_ID = 'G-5FGSC124M0';
 
 type Gtag = (...args: unknown[]) => void;
 declare global { interface Window { dataLayer: unknown[]; gtag?: Gtag } }
