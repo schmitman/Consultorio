@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /anterior/
+
+Sitemap: https://maraschmitman.com/sitemap.xml
