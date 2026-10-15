@@ -95,3 +95,22 @@ export const FAQ = [
   { q: '¿Cómo coordinamos las sesiones y la agenda?', a: 'Después de leer tu mensaje y tu perfil te respondo por mail con una propuesta de días y horarios. Los grupos arrancan cuando se completa el cupo.' },
   { q: '¿Las sesiones son remotas o presenciales?', a: 'Remotas, por videollamada.' },
 ];
+
+// Prensa y charlas. Las fechas futuras se muestran como "Próximas"; cuando pasan, se mueven solas a la lista.
+export type Aparicion = { fecha: string; tipo: 'Columna' | 'Charla' | 'Podcast' | 'Video' | 'Nota'; medio: string; titulo: string; url?: string; detalle?: string };
+
+export const COLUMNAS: Aparicion[] = [
+  { fecha: '2026-08-29', tipo: 'Columna', medio: 'El Cronista', titulo: 'El riesgo “menos visible” de la IA: una generación que revisa sin haber aprendido a hacer', url: 'https://www.cronista.com/columnistas/el-riesgo-menos-visible-de-la-ia-una-generacion-que-revisa-sin-haber-aprendido-a-hacer/' },
+  { fecha: '2026-08-01', tipo: 'Columna', medio: 'Ámbito', titulo: 'El espejismo de la eficiencia: ¿la inteligencia artificial mejoró la selección de personal?', url: 'https://www.ambito.com/opiniones/el-espejismo-la-eficiencia-la-inteligencia-artificial-mejoro-la-seleccion-personal-n6305904' },
+  { fecha: '2020-12-06', tipo: 'Columna', medio: 'Ámbito', titulo: 'Cómo será el mundo laboral después de la pandemia', url: 'https://www.ambito.com/opiniones/trabajo/como-sera-el-mundo-laboral-despues-la-pandemia-n5153053' },
+  { fecha: '2019-04-24', tipo: 'Columna', medio: 'Ámbito', titulo: 'Empresas horizontales: ¿qué son y qué traen de nuevo?', url: 'https://www.ambito.com/edicion-impresa/empresas/horizontales-que-son-y-que-traen-nuevo-n5027865' },
+];
+
+export const CHARLAS: Aparicion[] = [
+  { fecha: '2026-10-20', tipo: 'Charla', medio: 'SAIAConf 2026', titulo: 'Panel «El futuro del trabajo: donde la IA nunca va a reemplazarnos»', url: 'https://saiaconf.ar/#entradas', detalle: '12:15 · Escenario Horizonte · Costa Salguero, CABA' },
+  { fecha: '2026-10-04', tipo: 'Podcast', medio: 'Es Más Complejo, con Nico Lucca', titulo: '¿Sirve la IA para encontrar empleo?', url: 'https://www.youtube.com/watch?v=yNsbiTsJU9s' },
+  { fecha: '2026-08-03', tipo: 'Video', medio: 'Funky Business', titulo: 'Entrevista: psicología y gestión estratégica de recursos humanos', url: 'https://www.youtube.com/watch?v=oJ5tCCuQ7fk' },
+  { fecha: '2024-07-16', tipo: 'Video', medio: 'Pelado Nerd', titulo: 'Las nuevas tecnologías en el mundo de IT', url: 'https://www.youtube.com/watch?v=QxEf9yJVE6Y' },
+  { fecha: '2022-08-16', tipo: 'Nota', medio: 'La Nación', titulo: 'Entrevista laboral: los errores que nos dejan fuera de carrera', url: 'https://www.lanacion.com.ar/sociedad/entrevista-laboral-los-errores-que-nos-dejan-fuera-de-carrera-y-una-pregunta-clave-que-suele-nid16082022/' },
+  { fecha: '2021-05-11', tipo: 'Video', medio: 'Pelado Nerd', titulo: 'Consejos para conseguir tu primer trabajo en IT', url: 'https://www.youtube.com/watch?v=BctKQ6HX1eI' },
+];
