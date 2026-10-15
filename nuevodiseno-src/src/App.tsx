@@ -59,7 +59,7 @@ export default function App() {
               key={v.id}
               onClick={() => go(v.id)}
               aria-current={view === v.id ? 'page' : undefined}
-              className={`flex items-baseline gap-3 py-2 text-left transition-colors ${view === v.id ? 'text-ink' : 'text-ink/50 hover:text-ink'}`}
+              className={`flex items-baseline gap-3 py-2 text-left transition-colors ${view === v.id ? 'text-ink' : 'text-muted hover:text-ink'}`}
             >
               <span className="mono-nav">{v.num}</span>
               <span className="font-serif text-xl">{v.label}</span>
@@ -83,7 +83,7 @@ export default function App() {
         {menuOpen && (
           <nav className="px-5 pb-4 flex flex-col" aria-label="Secciones">
             {VIEWS.map((v) => (
-              <button key={v.id} onClick={() => go(v.id)} className={`flex items-baseline gap-3 py-2.5 text-left ${view === v.id ? 'text-ink' : 'text-ink/50'}`}>
+              <button key={v.id} onClick={() => go(v.id)} className={`flex items-baseline gap-3 py-2.5 text-left ${view === v.id ? 'text-ink' : 'text-muted'}`}>
                 <span className="mono-nav">{v.num}</span>
                 <span className="font-serif text-xl">{v.label}</span>
               </button>

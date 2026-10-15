@@ -27,7 +27,7 @@ export const Termometro: React.FC = () => {
     <div className="max-w-2xl">
       <p className="mono">03 / Evaluación preliminar</p>
       <h2 className="text-4xl sm:text-5xl leading-[1.05] mt-3">Termómetro de <em>carrera</em><span className="dot">.</span></h2>
-      <p className="text-ink/75 mt-3 max-w-xl">
+      <p className="text-ink mt-3 max-w-xl">
         Cuatro preguntas para ver qué formato te conviene: individual o grupal, inserción o cambio de rumbo.
       </p>
 
@@ -68,7 +68,7 @@ export const Termometro: React.FC = () => {
         ) : result && (
           <div className="mt-4 space-y-4">
             <h3 className="text-2xl sm:text-3xl">{result.name}</h3>
-            <p className="text-ink/85">
+            <p className="text-ink">
               Por lo que respondiste, tu momento se parece más a un proceso de <strong>{result.camino}</strong>, y te conviene arrancar en formato <strong>{result.modo}</strong>.
             </p>
             <p className="text-sm text-muted">Es una orientación inicial; lo confirmamos cuando leo tu caso.</p>

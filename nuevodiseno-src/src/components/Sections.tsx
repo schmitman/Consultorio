@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CAMINOS, PROGRAMAS, FAQ, LINKEDIN, EMAIL, mailto, type Mode } from '../content';
-const mara = '/mara.jpg'; // foto que ya vive en la raíz del repo
+const nombreAMano = `${import.meta.env.BASE_URL}img/nombre-mara-schmitman.png`; // nombre escrito a mano por Mara
 
 const Eyebrow: React.FC<{ children: React.ReactNode }> = ({ children }) => <p className="mono">{children}</p>;
 const H2: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -14,7 +14,7 @@ export const Portada: React.FC<{ go: (id: 'termometro' | 'caminos') => void }> =
     <h1 className="text-6xl sm:text-7xl lg:text-[5.5rem] leading-[0.98] mt-4">
       Estrategia de<br /><em>carrera</em><span className="dot">.</span>
     </h1>
-    <p className="text-lg sm:text-xl text-ink/80 leading-relaxed mt-6 max-w-lg">
+    <p className="text-lg sm:text-xl text-ink leading-relaxed mt-6 max-w-lg">
       Consultorías individuales y grupales para entrar al mercado laboral o cambiar de rumbo con bases firmes.
     </p>
     <div className="flex flex-wrap gap-3 mt-7">
@@ -32,7 +32,7 @@ export const Caminos: React.FC = () => (
   <div className="max-w-4xl">
     <Eyebrow>01 / Dos caminos</Eyebrow>
     <H2>¿Cuál es tu momento de <em>carrera</em><span className="dot">?</span></H2>
-    <p className="text-ink/75 mt-3 max-w-xl">Conseguir el primer trabajo y cambiar de rumbo piden estrategias distintas, porque el mercado mira cosas distintas en cada caso.</p>
+    <p className="text-ink mt-3 max-w-xl">Conseguir el primer trabajo y cambiar de rumbo piden estrategias distintas, porque el mercado mira cosas distintas en cada caso.</p>
     <div className="grid md:grid-cols-2 gap-4 mt-8">
       {(['a', 'b'] as const).map((k) => {
         const c = CAMINOS[k];
@@ -40,11 +40,11 @@ export const Caminos: React.FC = () => (
           <article key={k} className="card p-5 sm:p-6 flex flex-col gap-3 bg-white/55">
             <span className="mono text-rose">{c.tab} · {c.tag}</span>
             <h3 className="text-2xl sm:text-3xl leading-tight">{c.title}</h3>
-            <p className="text-sm text-ink/80">{c.text}</p>
-            <ul className="text-sm text-ink/80 space-y-1.5 mt-1">
+            <p className="text-sm text-ink">{c.text}</p>
+            <ul className="text-sm text-ink space-y-1.5 mt-1">
               <li className="mono !text-[0.6rem]">Las trampas más frecuentes</li>
               {c.traps.map((t) => (
-                <li key={t} className="flex gap-2"><span className="text-rose font-mono shrink-0">×</span>{t}</li>
+                <li key={t} className="flex gap-2"><span className="text-muted shrink-0">×</span>{t}</li>
               ))}
             </ul>
             <div className="flex flex-wrap gap-2 mt-auto pt-2">
@@ -83,12 +83,12 @@ export const Programas: React.FC = () => {
           const [n, modo] = p.num.split(' / ');
           return (
             <article key={p.title} className="grid grid-cols-[44px_1fr] sm:grid-cols-[64px_1fr_auto] items-baseline gap-x-5 sm:gap-x-7 pt-5 pb-[18px] border-t border-ink/12">
-              <span className="font-serif font-normal text-[2.5rem] sm:text-[3.25rem] leading-[0.8] text-ink/45 [font-variant-numeric:lining-nums]">{n}</span>
+              <span className="font-serif font-normal text-[2.5rem] sm:text-[3.25rem] leading-[0.8] text-muted [font-variant-numeric:lining-nums]">{n}</span>
               <div>
                 <h3 className="text-2xl sm:text-[1.65rem] leading-[1.15]">{p.title}</h3>
-                <p className="mt-1.5 text-sm text-ink/70">{modo} · {p.meta}</p>
+                <p className="mt-1.5 text-sm text-ink">{modo} · {p.meta}</p>
               </div>
-              <a href={mailto(p.subject)} className="col-start-2 sm:col-start-auto mt-2 sm:mt-0 text-sm text-rose whitespace-nowrap underline decoration-1 underline-offset-[5px] decoration-rose/35 hover:decoration-rose">Hablemos de este formato ↗</a>
+              <a href={mailto(p.subject)} className="col-start-2 sm:col-start-auto mt-2 sm:mt-0 text-sm text-rose whitespace-nowrap underline decoration-1 underline-offset-[5px] decoration-ink/35 hover:decoration-rose">Hablemos de este formato ↗</a>
             </article>
           );
         })}
@@ -103,7 +103,7 @@ export const Sobre: React.FC = () => (
     <div className="lg:col-span-7">
       <Eyebrow>04 / Sobre Mara Schmitman</Eyebrow>
       <H2>Criterio forjado en <em>el terreno</em><span className="dot">.</span></H2>
-      <p className="text-ink/85 leading-relaxed mt-5">
+      <p className="text-ink leading-relaxed mt-5">
         Soy Licenciada en Psicología, con posgrado en Gestión Estratégica de Tecnología, y especialista en diseño organizacional.
         Desde 2008 armo equipos y diseño organizaciones, sentada del lado de quien decide a quién se contrata. Abro este espacio,
         individual y grupal, para que ese criterio les sirva directamente a las personas que necesitan entrar al mercado o cambiar de rumbo.
@@ -117,12 +117,11 @@ export const Sobre: React.FC = () => (
     </div>
     <figure className="lg:col-span-5 card p-6 flex flex-col justify-center gap-4 bg-white/45">
       <p className="mono text-sage">Hechos, no adjetivos</p>
-      <p className="font-serif text-2xl leading-snug text-ink/90">
+      <p className="font-serif text-2xl leading-snug text-ink">
         “Un perfil profesional sólido no se construye decorando adjetivos, sino ordenando los problemas que resolviste y demostrando qué valor concreto aportás.”
       </p>
-      <figcaption className="flex items-center gap-3 pt-1">
-        <img src={mara} alt="Mara Schmitman" className="w-10 h-10 rounded-full object-cover" />
-        <span className="text-sm">Mara Schmitman</span>
+      <figcaption className="pt-1">
+        <img src={nombreAMano} alt="Mara Schmitman" className="w-[300px] max-w-full -ml-3.5 -mb-1.5" />
       </figcaption>
     </figure>
   </div>
@@ -139,9 +138,9 @@ export const Faq: React.FC = () => (
           <summary className="flex gap-3 items-baseline font-serif text-xl text-ink">
             <span className="mono shrink-0">0{i + 1}</span>
             <span className="flex-1">{x.q}</span>
-            <span className="text-rose font-mono text-sm group-open:rotate-45 transition-transform">+</span>
+            <span className="text-ink text-sm group-open:rotate-45 transition-transform">+</span>
           </summary>
-          <p className="pl-9 pt-2 text-sm text-ink/80 leading-relaxed">{x.a}</p>
+          <p className="pl-9 pt-2 text-sm text-ink leading-relaxed">{x.a}</p>
         </details>
       ))}
     </div>
@@ -153,12 +152,12 @@ export const Hablemos: React.FC = () => (
   <div className="max-w-2xl">
     <Eyebrow>06 / Contacto directo</Eyebrow>
     <h2 className="text-6xl sm:text-7xl leading-none mt-3">Hablemos<span className="dot">.</span></h2>
-    <p className="text-ink/75 mt-5 max-w-md">
+    <p className="text-ink mt-5 max-w-md">
       Contame en qué momento estás y pasame tu LinkedIn o CV. Te respondo personalmente en 24 a 48 hs hábiles.
     </p>
     <div className="mt-7 flex flex-wrap items-center gap-4">
       <a href={mailto('Consulta de carrera')} className="btn btn-dark text-base px-6">Escribime a {EMAIL} →</a>
-      <a href={LINKEDIN} target="_blank" rel="noopener" className="text-sm text-ink/75 hover:text-rose">LinkedIn ↗</a>
+      <a href={LINKEDIN} target="_blank" rel="noopener" className="text-sm text-ink hover:text-rose">LinkedIn ↗</a>
     </div>
     <p className="mono mt-10">© 2026 Mara Schmitman. Tigre, Buenos Aires.</p>
   </div>

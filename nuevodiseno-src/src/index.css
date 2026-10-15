@@ -1,17 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  /* Escala de grises; el único color es el verde del punto, como en el sitio original */
+  /* Escala de grises en tres valores (tinta, gris medio, filetes); el único color es el verde del punto */
   --color-paper: #F5F5F4;
   --color-ink: #232323;
-  --color-rose: #6E6E6E; /* acento: palabra en itálica, links y marcas activas (gris) */
-  --color-rose-deep: #3A3A3A;
-  --color-sage: #7A7A7A;
+  --color-rose: #232323; /* acento de links y marcas activas: tinta */
+  --color-rose-deep: #4A4A4A;
+  --color-sage: #6B6B6B;
   --color-muted: #6B6B6B;
-  --color-green: #16A34A;
+  --color-green: #3B7A55;
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
 @layer base {
@@ -48,17 +47,20 @@
   color: var(--color-muted);
 }
 
-/* Números y datos del menú lateral: siguen en mono */
+/* Números y datos del menú lateral (cifras de ancho fijo para que las secciones queden alineadas) */
 .mono-nav {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-weight: 600;
   font-size: 0.6rem;
+  font-variant-numeric: tabular-nums;
+  min-width: 1.5em;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-muted);
 }
 
 /* Palabra acentuada en los títulos */
-h1 em, h2 em, h3 em { font-style: italic; color: var(--color-rose); }
+h1 em, h2 em, h3 em { font-style: italic; color: var(--color-ink); }
 .dot { color: var(--color-green); }
 
 /* Botones planos, esquinas rectas, 44px de alto */
