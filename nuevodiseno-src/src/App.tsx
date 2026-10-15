@@ -4,6 +4,7 @@ import { Portada, Caminos, Programas, Sobre, Faq, Hablemos } from './components/
 import { Termometro } from './components/Termometro';
 import { Meadow } from './components/Meadow';
 import { EMAIL } from './content';
+import { trackView } from './analytics';
 
 const VIEWS = [
   { id: 'inicio', label: 'Inicio', num: '00' },
@@ -31,6 +32,12 @@ export default function App() {
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
+
+  useEffect(() => {
+    trackView(view);
+    const label = VIEWS.find((v) => v.id === view)?.label;
+    document.title = view === 'inicio' ? 'Mara Schmitman | Consultoría de carrera' : `${label} · Mara Schmitman`;
+  }, [view]);
 
   const go = (id: ViewId) => {
     window.location.hash = id;
