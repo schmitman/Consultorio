@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { track } from '../analytics';
 import { QUESTIONS, PROGRAM_NAMES, EMAIL, type Score } from '../content';
 
 const resultMailto = (name: string) =>
@@ -20,6 +21,8 @@ export const Termometro: React.FC = () => {
     if (s('diag') > s('programa') && modo === 'individual') key = 'diag';
     result = { name: PROGRAM_NAMES[key], camino: camino === 'pivot' ? 'cambio de rumbo' : 'inserción en el mercado', modo };
   }
+
+  useEffect(() => { if (result) track('diagnostico_completo', { programa: result.name }); }, [done]); // eslint-disable-line
 
   const reset = () => { setStep(0); setScore({}); };
 
