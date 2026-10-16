@@ -47,7 +47,7 @@ export const Agendar: React.FC = () => {
             <iframe
               src={AGENDA.calendario}
               title="Agenda de Mara Schmitman"
-              className="w-full h-[680px] sm:h-[620px] border hairline bg-white"
+              className="w-full h-[940px] sm:h-[640px] border hairline bg-white"
               loading="lazy"
             />
           ) : AGENDA.calendario ? (

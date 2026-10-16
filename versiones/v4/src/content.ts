@@ -8,7 +8,7 @@ export const BONDY = 'https://wearebondy.com';
 // - calendario: link de la página de reservas de Google Calendar (Agenda de citas → Compartir → Link de la página de reservas).
 // - monto: precio del diagnóstico, tal como se muestra (ej. '$XX.000'). Vacío = no se muestra.
 export const AGENDA = {
-  calendario: '',
+  calendario: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3-ZPAwTHxOYCGpt0bAUB4ITPLIdFdWZQ72jVP3CQgUPcEYMD0uzvHBWgeCf1umIkperog2umXa?gv=true',
   monto: '',
   alias: 'mara.s.santander',
 };
