@@ -150,7 +150,7 @@ export const Prensa: React.FC = () => {
           <p className="mt-1 font-serif font-medium text-[1.625rem] leading-[1.2] text-ink">{a.titulo}</p>
           <p className="mt-2 text-base text-muted">
             {a.detalle}
-            {a.url && <> · <a href={a.url} target="_blank" rel="noopener" className="text-ink underline decoration-1 underline-offset-4 hover:decoration-green">Entradas ↗</a></>}
+            {a.url && <> · <a href={a.url} target="_blank" rel="noopener" className="text-ink underline decoration-1 underline-offset-4 hover:decoration-green">{a.cta ?? 'Entradas'} ↗</a></>}
           </p>
         </div>
       ))}
