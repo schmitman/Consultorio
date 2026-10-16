@@ -9,3 +9,4 @@ Al hacer push, el workflow `.github/workflows/versiones.yml` la compila en `nuev
 | Versión | Qué prueba |
 |---|---|
 | v1 | Página larga que se recorre scrolleando: Portada → Sobre Mara → Caminos y Programas → Diagnóstico → FAQ → Hablemos. Menú como atajo. |
+| v2 | Igual que la v1, pero "En los medios" sale de Sobre Mara y pasa a ser su propia sección (después del Diagnóstico, antes de FAQ). |
