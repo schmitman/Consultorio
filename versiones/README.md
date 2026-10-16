@@ -12,3 +12,4 @@ Al hacer push, el workflow `.github/workflows/versiones.yml` la compila en `nuev
 | v2 | Igual que la v1, pero "En los medios" sale de Sobre Mara y pasa a ser su propia sección (después del Diagnóstico, antes de FAQ). |
 | v3 | v2 + botón flotante "Hablemos" que abre un mini bot (4 preguntas del diagnóstico → recomendación → nombre, email y situación → mail armado para Mara). Sin sección Diagnóstico. Bondy en la ficha de Sobre Mara. |
 | v4 | v3 + página interna /agendar para el Diagnóstico 1 a 1: elegir horario (agenda de Google), transferir al alias y mandar el comprobante por mail. El bot y Programas llevan a esa página. |
+| v5 | v4 + precios solo de los formatos 1 a 1 en Programas; los grupales muestran "Lista de espera abierta" y el bot anota días, franja y desde cuándo (mail armado para Mara). |
