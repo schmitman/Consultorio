@@ -2,6 +2,18 @@
 
 export const EMAIL = 'mara@schmitman.com';
 export const LINKEDIN = 'https://www.linkedin.com/in/mara-schmitman2/';
+export const BONDY = 'https://wearebondy.com';
+
+// Página interna "Agendar": solo el Diagnóstico 1 a 1 se reserva y paga directo.
+// - calendario: link de la página de reservas de Google Calendar (Agenda de citas → Compartir → Link de la página de reservas).
+// - monto: precio del diagnóstico, tal como se muestra. Vacío = no se muestra.
+// - linkPago: link de pago de Mercado Pago (tarjeta, débito, dinero en cuenta). Vacío = solo se muestra el alias.
+export const AGENDA = {
+  calendario: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3-ZPAwTHxOYCGpt0bAUB4ITPLIdFdWZQ72jVP3CQgUPcEYMD0uzvHBWgeCf1umIkperog2umXa?gv=true',
+  monto: '$130.000',
+  linkPago: 'https://mpago.la/1kFiKrv', // Mercado Pago: "Diagnóstico 1 a 1 · Mara Schmitman", $130.000
+  alias: 'mara.s.santander',
+};
 
 const BODY = 'Hola Mara,\n\nTe cuento mi situación:\n\n\nMi LinkedIn o CV:\n';
 export const mailto = (subject: string, body: string = BODY) =>
@@ -49,9 +61,10 @@ export const CAMINOS = {
 };
 
 export type Mode = 'individual' | 'grupal';
-export const PROGRAMAS: { num: string; mode: Mode; pill: string; title: string; meta: string; who: string; subject: string }[] = [
-  { num: '01 / 1 a 1', mode: 'individual', pill: 'Ambos caminos', title: 'Diagnóstico 1 a 1: calibración y posicionamiento', meta: '1 encuentro de 90 min + devolución escrita', who: 'Personas que necesitan un diagnóstico honesto y un plan de acción rápido.', subject: 'Consulta: diagnóstico 1 a 1' },
-  { num: '02 / 1 a 1', mode: 'individual', pill: 'Cambio de rumbo', title: 'Programa integral 1 a 1: transición estratégica', meta: '4 encuentros individuales en 6 semanas + soporte', who: 'Profesionales en transición de industria o de rol que quieren acompañamiento continuo.', subject: 'Consulta: cambio de rumbo, 1 a 1' },
+// precio: solo los formatos 1 a 1 (los grupales se cotizan cuando se arma el grupo)
+export const PROGRAMAS: { num: string; mode: Mode; pill: string; title: string; meta: string; who: string; subject: string; precio?: string }[] = [
+  { num: '01 / 1 a 1', mode: 'individual', pill: 'Ambos caminos', title: 'Diagnóstico 1 a 1: calibración y posicionamiento', meta: '1 encuentro de 90 min + devolución escrita', who: 'Personas que necesitan un diagnóstico honesto y un plan de acción rápido.', subject: 'Consulta: diagnóstico 1 a 1', precio: '$130.000' },
+  { num: '02 / 1 a 1', mode: 'individual', pill: 'Cambio de rumbo', title: 'Programa integral 1 a 1: transición estratégica', meta: '4 encuentros individuales en 6 semanas + soporte', who: 'Profesionales en transición de industria o de rol que quieren acompañamiento continuo.', subject: 'Consulta: cambio de rumbo, 1 a 1', precio: '$480.000' },
   { num: '03 / Grupo de 4 a 6', mode: 'grupal', pill: 'Inserción', title: 'Laboratorio grupal: inserción al mercado', meta: '3 encuentros de 2 horas, cohorte intensiva', who: 'Jóvenes profesionales que aprenden mejor con pares y feedback del grupo.', subject: 'Consulta: laboratorio grupal de inserción' },
   { num: '04 / Grupo de 4 a 6', mode: 'grupal', pill: 'Cambio de rumbo', title: 'Mesa redonda grupal: rediseño y pivot profesional', meta: '4 encuentros quincenales de 2 horas', who: 'Líderes y especialistas con experiencia que quieren contrastar su transición con pares.', subject: 'Consulta: mesa grupal de cambio de rumbo' },
 ];

@@ -1,20 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 const pradoLupinos = `${import.meta.env.BASE_URL}img/prado-lupinos.jpg`;
 
-// Prado de lupinos fijo al pie de la ventana, detrás del contenido. Se desplaza unos píxeles con el mouse; nada más.
-export const Meadow: React.FC = () => {
+// Prado de lupinos al pie de la sección que lo contiene (portada y Hablemos). Scrollea con la página; se desplaza unos píxeles con el mouse.
+export const Meadow: React.FC<{ className?: string }> = ({ className = '' }) => {
   const ref = useRef<HTMLImageElement | null>(null);
-  const wrap = useRef<HTMLDivElement | null>(null);
-
-  // En las vistas que scrollean (Sobre Mara), el prado se desvanece al bajar para que el texto se lea
-  useEffect(() => {
-    const el = wrap.current;
-    if (!el) return;
-    const onScroll = () => { el.style.opacity = String(Math.max(0.1, 1 - window.scrollY / 350)); };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   useEffect(() => {
     const el = ref.current;
@@ -29,15 +18,15 @@ export const Meadow: React.FC = () => {
   }, []);
 
   return (
-    <div ref={wrap} className="fixed inset-x-0 bottom-0 z-0 pointer-events-none overflow-hidden h-[32vh] lg:h-[40vh] lg:left-60 transition-opacity duration-300" aria-hidden="true">
+    <div className={`absolute inset-x-0 bottom-0 z-0 pointer-events-none overflow-hidden ${className}`} aria-hidden="true">
       <img
         ref={ref}
         src={pradoLupinos}
         alt=""
         className="absolute inset-x-0 bottom-0 w-full h-full object-cover object-bottom mix-blend-multiply opacity-60 will-change-transform transition-transform duration-700 ease-out"
         style={{
-          maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 40%, black 75%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 40%, black 75%)',
+          maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 40%, black 72%, black 86%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 40%, black 72%, black 86%, transparent 100%)',
           filter: 'saturate(0.3) contrast(0.9) brightness(1.04)',
         }}
       />

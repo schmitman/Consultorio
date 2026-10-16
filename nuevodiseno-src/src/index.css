@@ -113,7 +113,21 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--color-ink); }
 details summary { list-style: none; cursor: pointer; }
 details summary::-webkit-details-marker { display: none; }
 
-/* Cambio de vista sin scroll: fundido corto */
-@keyframes viewIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-.view-in { animation: viewIn .35s ease-out both; }
-@media (prefers-reduced-motion: reduce) { .view-in { animation: none; } }
+/* Las secciones aparecen con un fundido suave al llegar a ellas */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease-out, transform .7s ease-out; }
+.reveal.is-shown { opacity: 1; transform: none; }
+
+/* Flecha de la portada: se mece para indicar que hay más abajo */
+@keyframes cue { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 6px); } }
+.scroll-cue { animation: cue 2.2s ease-in-out infinite; }
+
+/* Panel del bot: sube desde abajo */
+@keyframes botIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.bot-in { animation: botIn .25s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bot-in { animation: none; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .scroll-cue { animation: none; }
+}
