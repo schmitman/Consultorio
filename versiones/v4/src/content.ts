@@ -11,7 +11,7 @@ export const BONDY = 'https://wearebondy.com';
 export const AGENDA = {
   calendario: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3-ZPAwTHxOYCGpt0bAUB4ITPLIdFdWZQ72jVP3CQgUPcEYMD0uzvHBWgeCf1umIkperog2umXa?gv=true',
   monto: '$130.000',
-  linkPago: '',
+  linkPago: 'https://mpago.la/1kFiKrv', // Mercado Pago: "Diagnóstico 1 a 1 · Mara Schmitman", $130.000
   alias: 'mara.s.santander',
 };
 
