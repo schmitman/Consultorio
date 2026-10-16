@@ -57,24 +57,25 @@ export const Agendar: React.FC = () => {
           )}
         </Paso>
 
-        <Paso n="2" titulo="Transferí para confirmar">
-          <p className="text-ink max-w-xl">La cita queda confirmada cuando recibo la transferencia.</p>
-          <div className="card mt-5 p-5 sm:p-6 bg-white/60 grid gap-4 sm:grid-cols-2">
-            <div>
-              <p className="mono">Alias</p>
-              <div className="mt-1 flex items-center gap-3 flex-wrap">
-                <span className="font-serif text-2xl text-ink select-all">{AGENDA.alias}</span>
-                <button type="button" onClick={copiar} className="inline-flex items-center gap-1.5 h-11 px-3 border hairline bg-white/70 hover:border-ink text-sm" aria-live="polite">
-                  {copiado ? <><Check className="w-4 h-4" aria-hidden="true" /> Copiado</> : <><Copy className="w-4 h-4" aria-hidden="true" /> Copiar</>}
-                </button>
-              </div>
+        <Paso n="2" titulo={AGENDA.linkPago ? 'Pagá para confirmar' : 'Transferí para confirmar'}>
+          <p className="text-ink max-w-xl">{AGENDA.linkPago ? 'La cita queda confirmada cuando recibo el pago.' : 'La cita queda confirmada cuando recibo la transferencia.'}</p>
+          {AGENDA.monto && (
+            <p className="mt-5"><span className="mono">Monto</span> <span className="ml-2 font-serif text-3xl text-ink">{AGENDA.monto}</span></p>
+          )}
+          {AGENDA.linkPago && (
+            <div className="mt-5">
+              <a href={AGENDA.linkPago} target="_blank" rel="noopener" onClick={() => track('pago_mercadopago')} className="btn btn-dark">Pagar con Mercado Pago ↗</a>
+              <p className="text-sm text-muted mt-2">Tarjeta de crédito o débito, o dinero en cuenta.</p>
             </div>
-            {AGENDA.monto && (
-              <div>
-                <p className="mono">Monto</p>
-                <p className="mt-1 font-serif text-2xl text-ink">{AGENDA.monto}</p>
-              </div>
-            )}
+          )}
+          <div className="card mt-5 p-5 sm:p-6 bg-white/60">
+            <p className="mono">{AGENDA.linkPago ? 'O transferí al alias' : 'Alias'}</p>
+            <div className="mt-1 flex items-center gap-3 flex-wrap">
+              <span className="font-serif text-2xl text-ink select-all">{AGENDA.alias}</span>
+              <button type="button" onClick={copiar} className="inline-flex items-center gap-1.5 h-11 px-3 border hairline bg-white/70 hover:border-ink text-sm" aria-live="polite">
+                {copiado ? <><Check className="w-4 h-4" aria-hidden="true" /> Copiado</> : <><Copy className="w-4 h-4" aria-hidden="true" /> Copiar</>}
+              </button>
+            </div>
           </div>
         </Paso>
 

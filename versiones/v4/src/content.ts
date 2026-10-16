@@ -6,10 +6,12 @@ export const BONDY = 'https://wearebondy.com';
 
 // Página interna "Agendar": solo el Diagnóstico 1 a 1 se reserva y paga directo.
 // - calendario: link de la página de reservas de Google Calendar (Agenda de citas → Compartir → Link de la página de reservas).
-// - monto: precio del diagnóstico, tal como se muestra (ej. '$XX.000'). Vacío = no se muestra.
+// - monto: precio del diagnóstico, tal como se muestra. Vacío = no se muestra.
+// - linkPago: link de pago de Mercado Pago (tarjeta, débito, dinero en cuenta). Vacío = solo se muestra el alias.
 export const AGENDA = {
   calendario: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3-ZPAwTHxOYCGpt0bAUB4ITPLIdFdWZQ72jVP3CQgUPcEYMD0uzvHBWgeCf1umIkperog2umXa?gv=true',
-  monto: '',
+  monto: '$130.000',
+  linkPago: '',
   alias: 'mara.s.santander',
 };
 
