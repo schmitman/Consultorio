@@ -1,4 +1,4 @@
-import{c as e,m as t,r as n,t as r}from"./src-BGaH0VKn.js";import{createRoot as i}from"react-dom/client";import{useState as a}from"react";import{Check as o,Copy as s}from"lucide-react";import{Fragment as c,jsx as l,jsxs as u}from"react/jsx-runtime";var d=`/nuevodiseno/v4/`,f=t(`Comprobante: Diagnóstico 1 a 1`,`Hola Mara,
+import{c as e,m as t,r as n,t as r}from"./src-Dh9Mf4YU.js";import{createRoot as i}from"react-dom/client";import{useState as a}from"react";import{Check as o,Copy as s}from"lucide-react";import{Fragment as c,jsx as l,jsxs as u}from"react/jsx-runtime";var d=`/nuevodiseno/v4/`,f=t(`Comprobante: Diagnóstico 1 a 1`,`Hola Mara,
 
 Te mando el comprobante de la transferencia para el Diagnóstico 1 a 1.
 
