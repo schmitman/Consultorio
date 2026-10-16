@@ -1,3 +1,4 @@
-# El diseño nuevo pasó a la raíz: los links viejos a /nuevodiseno/ redirigen a la portada
+# El diseño nuevo pasó a la raíz: /nuevodiseno/ redirige a la portada.
+# Las versiones de prueba (/nuevodiseno/v1/, /v2/…) se sirven tal cual.
 /nuevodiseno    /    301
-/nuevodiseno/*  /    301
+/nuevodiseno/   /    301

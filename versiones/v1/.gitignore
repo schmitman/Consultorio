@@ -1,0 +1,12 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Se generan en el build (og/generar.mjs)
+public/img/og-mara-schmitman.png
+public/img/apple-touch-icon.png
