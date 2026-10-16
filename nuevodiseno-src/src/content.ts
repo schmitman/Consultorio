@@ -120,6 +120,7 @@ export const COLUMNAS: Aparicion[] = [
 ];
 
 export const CHARLAS: Aparicion[] = [
+  { fecha: '2026-10-21', tipo: 'Charla', medio: 'Universidad de San Andrés · Maestría en IA', titulo: 'Carreras profesionales en Data/AI: del especialista técnico al líder de impacto', detalle: '19 h · Auditorio Sede Riobamba (Riobamba 1276), CABA · Con Maika Basavilbaso y Mayra Sciarrillo, modera Patricio Rocca · Inscripción previa' },
   { fecha: '2026-10-20', tipo: 'Charla', medio: 'SAIAConf 2026', titulo: 'Panel «El futuro del trabajo: donde la IA nunca va a reemplazarnos»', url: 'https://saiaconf.ar/#entradas', detalle: '12:15 · Escenario Horizonte · Costa Salguero, CABA' },
   { fecha: '2026-10-04', tipo: 'Podcast', medio: 'Es Más Complejo, con Nico Lucca', titulo: '¿Sirve la IA para encontrar empleo?', url: 'https://www.youtube.com/watch?v=yNsbiTsJU9s' },
   { fecha: '2026-09-23', tipo: 'Podcast', medio: 'Radio Con Vos · Invento Argentino', titulo: 'Inteligencia artificial: ¿contra el amor y el trabajo?', url: 'https://www.youtube.com/watch?v=lPoQdj4Efl0' },
