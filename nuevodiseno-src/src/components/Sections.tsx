@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { CAMINOS, PROGRAMAS, FAQ, LINKEDIN, EMAIL, COLUMNAS, CHARLAS, mailto, type Mode, type Aparicion } from '../content';
+import React, { useState } from 'react';
+import { CAMINOS, PROGRAMAS, FAQ, LINKEDIN, BONDY, EMAIL, COLUMNAS, CHARLAS, mailto, type Mode, type Aparicion } from '../content';
+import { abrirBot } from './Bot';
 const nombreAMano = `${import.meta.env.BASE_URL}img/nombre-mara-schmitman.png`; // nombre escrito a mano por Mara
 const retrato = `${import.meta.env.BASE_URL}img/mara-schmitman.png`; // retrato sin fondo, sobre un tono neutro
 
@@ -9,7 +10,7 @@ const H2: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 );
 
 /* ---------- 00 PORTADA ---------- */
-export const Portada: React.FC<{ go: (id: 'termometro' | 'caminos') => void }> = ({ go }) => (
+export const Portada: React.FC = () => (
   <div className="max-w-[640px]">
     <Eyebrow>Mara Schmitman · Lic. en Psicología &amp; diseño organizacional</Eyebrow>
     <h1 className="text-6xl sm:text-7xl lg:text-[5.5rem] leading-[0.98] mt-4">
@@ -20,7 +21,7 @@ export const Portada: React.FC<{ go: (id: 'termometro' | 'caminos') => void }> =
     </p>
     <div className="flex flex-wrap gap-3 mt-7">
       <a href={mailto('Consulta de carrera')} className="btn btn-dark">Hablemos →</a>
-      <button onClick={() => go('termometro')} className="btn-link">Diagnóstico de 2 minutos</button>
+      <button type="button" onClick={() => abrirBot()} className="btn-link">Diagnóstico de 2 minutos</button>
     </div>
     <p className="mt-8 text-sm text-muted">
       <span className="font-semibold text-ink">18+ años</span> armando equipos, del lado de quien decide a quién se contrata.
@@ -31,7 +32,7 @@ export const Portada: React.FC<{ go: (id: 'termometro' | 'caminos') => void }> =
 /* ---------- 01 CAMINOS ---------- */
 export const Caminos: React.FC = () => (
   <div className="max-w-5xl">
-    <Eyebrow>01 / Dos caminos</Eyebrow>
+    <Eyebrow>02 / Dos caminos</Eyebrow>
     <H2>¿Cuál es tu momento de <em>carrera</em><span className="dot">?</span></H2>
     <p className="text-ink mt-3 max-w-xl">Conseguir el primer trabajo y cambiar de rumbo piden estrategias distintas, porque el mercado mira cosas distintas en cada caso.</p>
     <div className="grid md:grid-cols-2 gap-8 md:gap-14 mt-8">
@@ -70,7 +71,7 @@ export const Programas: React.FC = () => {
     <div className="max-w-4xl">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <Eyebrow>02 / Modalidades</Eyebrow>
+          <Eyebrow>03 / Modalidades</Eyebrow>
           <H2>Formatos y <em>programas</em><span className="dot">.</span></H2>
         </div>
         <div className="flex gap-7" role="group" aria-label="Filtrar programas">
@@ -88,8 +89,22 @@ export const Programas: React.FC = () => {
               <div>
                 <h3 className="text-2xl sm:text-[1.65rem] leading-[1.15]">{p.title}</h3>
                 <p className="mt-1.5 text-sm text-ink">{modo} · {p.meta}</p>
+                {p.precio ? (
+                  <p className="mt-1.5 font-serif text-xl text-ink [font-variant-numeric:lining-nums]">{p.precio}</p>
+                ) : (
+                  <p className="mt-1.5 mono !text-green">Lista de espera abierta</p>
+                )}
               </div>
-              <a href={mailto(p.subject)} className="col-start-2 sm:col-start-auto mt-2 sm:mt-0 text-sm text-rose whitespace-nowrap underline decoration-1 underline-offset-[5px] decoration-ink/35 hover:decoration-rose">Hablemos de este formato ↗</a>
+              <div className="col-start-2 sm:col-start-auto mt-2 sm:mt-0 flex flex-wrap sm:flex-col sm:items-end gap-x-5 gap-y-1">
+                {p.subject === 'Consulta: diagnóstico 1 a 1' && (
+                  <a href={`${import.meta.env.BASE_URL}agendar/`} className="text-sm text-ink font-medium whitespace-nowrap underline decoration-1 underline-offset-[5px] decoration-green hover:decoration-ink">Agendar →</a>
+                )}
+                {p.mode === 'grupal' ? (
+                  <button type="button" onClick={() => abrirBot(p.title)} className="text-sm text-ink font-medium whitespace-nowrap underline decoration-1 underline-offset-[5px] decoration-green hover:decoration-ink text-left">Sumarme a la lista de espera →</button>
+                ) : (
+                  <a href={mailto(p.subject)} className="text-sm text-rose whitespace-nowrap underline decoration-1 underline-offset-[5px] decoration-ink/35 hover:decoration-rose">Hablemos de este formato ↗</a>
+                )}
+              </div>
             </article>
           );
         })}
@@ -98,7 +113,7 @@ export const Programas: React.FC = () => {
   );
 };
 
-/* ---------- EN LOS MEDIOS (dentro de Sobre Mara) ---------- */
+/* ---------- 04 EN LOS MEDIOS ---------- */
 const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 const fecha = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${MESES[m - 1]} ${y}`; };
 const hoy = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
@@ -121,13 +136,13 @@ const Lista: React.FC<{ titulo: string; items: Aparicion[] }> = ({ titulo, items
   </div>
 );
 
-const EnLosMedios: React.FC = () => {
+export const Prensa: React.FC = () => {
   const h = hoy();
   const proximas = CHARLAS.filter((a) => a.fecha >= h).sort((x, y) => x.fecha.localeCompare(y.fecha));
   const charlas = CHARLAS.filter((a) => a.fecha < h);
   return (
-    <section id="prensa" className="mt-20 lg:mt-56 pt-10 border-t border-ink/12 scroll-mt-20 lg:scroll-mt-12">
-      <Eyebrow>Prensa y charlas</Eyebrow>
+    <div className="max-w-4xl">
+      <Eyebrow>04 / Prensa y charlas</Eyebrow>
       <H2>En los <em>medios</em><span className="dot">.</span></H2>
       {proximas.map((a) => (
         <div key={a.fecha + a.titulo} className="mt-6 pl-4 border-l-2 border-green">
@@ -143,22 +158,12 @@ const EnLosMedios: React.FC = () => {
         <Lista titulo="Columnas" items={COLUMNAS} />
         <Lista titulo="Charlas y entrevistas" items={charlas} />
       </div>
-    </section>
+    </div>
   );
 };
 
-/* ---------- 04 SOBRE ---------- */
+/* ---------- 01 SOBRE ---------- */
 export const Sobre: React.FC = () => {
-  // #prensa abre Sobre Mara y baja hasta "En los medios"
-  useEffect(() => {
-    const ir = (espera: number) => {
-      if (window.location.hash === '#prensa') setTimeout(() => document.getElementById('prensa')?.scrollIntoView({ behavior: 'smooth' }), espera);
-    };
-    ir(400); // al entrar directo, esperar a que termine la animación de la vista
-    const alCambiar = () => ir(60);
-    window.addEventListener('hashchange', alCambiar);
-    return () => window.removeEventListener('hashchange', alCambiar);
-  }, []);
   const proxima = CHARLAS.filter((a) => a.fecha >= hoy()).sort((x, y) => x.fecha.localeCompare(y.fecha))[0];
   return (
   <div className="max-w-4xl">
@@ -171,7 +176,7 @@ export const Sobre: React.FC = () => {
           className="w-24 h-[7.5rem] lg:w-32 lg:h-40 shrink-0 rounded-2xl object-cover object-[50%_15%] bg-[#E6E5E1]"
         />
         <div>
-          <Eyebrow>04 / Sobre Mara Schmitman</Eyebrow>
+          <Eyebrow>01 / Sobre Mara Schmitman</Eyebrow>
           <H2>Criterio forjado en <em>el terreno</em><span className="dot">.</span></H2>
         </div>
       </div>
@@ -185,6 +190,7 @@ export const Sobre: React.FC = () => {
         <div><dt className="mono">Especialidad</dt><dd className="mt-0.5">Diseño organizacional</dd></div>
         <div><dt className="mono">Base</dt><dd className="mt-0.5">Tigre, Buenos Aires (sesiones remotas)</dd></div>
         <div><dt className="mono">Perfil</dt><dd className="mt-0.5"><a href={LINKEDIN} target="_blank" rel="noopener" className="text-rose hover:underline">LinkedIn ↗</a></dd></div>
+        <div className="col-span-2"><dt className="mono">Empresa</dt><dd className="mt-0.5"><a href={BONDY} target="_blank" rel="noopener" className="text-rose hover:underline">Bondy · recruiting tech ↗</a></dd></div>
       </dl>
       <a href="#prensa" className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1 group">
         {proxima ? (
@@ -208,7 +214,6 @@ export const Sobre: React.FC = () => {
       </figcaption>
     </figure>
   </div>
-  <EnLosMedios />
   </div>
   );
 };
