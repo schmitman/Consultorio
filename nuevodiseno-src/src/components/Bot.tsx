@@ -5,14 +5,14 @@ import { track } from '../analytics';
 
 // Mini bot de "Hablemos": hace las 4 preguntas del diagnóstico, recomienda un formato y, si la persona quiere,
 // arma un mail para Mara con sus respuestas, nombre y email. Para los grupales, anota a la persona en la lista de espera
-// con los días, franjas y desde cuándo puede empezar. No guarda nada: el mail lo manda la persona desde su correo.
+// con los días, franjas y desde cuándo puede empezar. Esa anotación se guarda sola; si falla, queda el mail como respaldo.
 
 // Cualquier botón del sitio puede abrir el bot con abrirBot(); con el nombre de un grupo, abre directo la lista de espera
 const EVENTO = 'abrir-bot';
 export const abrirBot = (grupo?: string) => window.dispatchEvent(new CustomEvent(EVENTO, { detail: grupo }));
 
 type Msg = { de: 'bot' | 'yo'; texto: string; nota?: string };
-type Etapa = 'inicio' | 'pregunta' | 'resultado' | 'grupo' | 'dias' | 'franja' | 'desde' | 'nombre' | 'email' | 'caso' | 'listo';
+type Etapa = 'inicio' | 'pregunta' | 'resultado' | 'grupo' | 'dias' | 'franja' | 'desde' | 'nombre' | 'email' | 'caso' | 'enviando' | 'anotada' | 'listo';
 
 const GRUPOS = [PROGRAM_NAMES.insercion_grupal, PROGRAM_NAMES.pivot_grupal];
 const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
@@ -30,6 +30,17 @@ const recomendar = (score: Score) => {
 };
 
 const emailValido = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e.trim());
+
+// La página en la que está la persona, más los utm que hayan llegado en el link.
+const origenLista = () => {
+  const actual = new URL(window.location.href);
+  const pagina = new URL(actual.pathname || '/', actual.origin);
+  pagina.hash = actual.hash;
+  actual.searchParams.forEach((valor, clave) => {
+    if (/^utm_/i.test(clave) && valor) pagina.searchParams.append(clave, valor);
+  });
+  return pagina.toString();
+};
 
 export const Bot: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -52,11 +63,13 @@ export const Bot: React.FC = () => {
   const [error, setError] = useState('');
   const lista = useRef<HTMLDivElement | null>(null);
   const panel = useRef<HTMLDivElement | null>(null);
+  const tanda = useRef(0);
 
   const bot = (...textos: (string | Msg)[]) => setLog((l) => [...l, ...textos.map((t) => (typeof t === 'string' ? { de: 'bot' as const, texto: t } : t))]);
   const yo = (texto: string) => setLog((l) => [...l, { de: 'yo', texto }]);
 
   const empezar = () => {
+    tanda.current += 1;
     setLog([]); setScore({}); setRespuestas([]); setQ(0); setCampo(''); setError(''); setModo('diagnostico');
     bot('Hola. Te hago 4 preguntas cortas sobre tu carrera y tu momento actual, y te digo qué formato te conviene.', QUESTIONS[0].t);
     setEtapa('pregunta');
@@ -64,6 +77,7 @@ export const Bot: React.FC = () => {
 
   // Lista de espera de los grupales. Desde el resultado del diagnóstico sigue la misma conversación; desde Programas arranca de cero.
   const empezarLista = (g?: string, seguir = false) => {
+    tanda.current += 1;
     if (!seguir) { setLog([]); setScore({}); setRespuestas([]); }
     setModo('lista'); setDias([]); setFranjas([]); setDesde(''); setMarcados([]); setCampo(''); setError('');
     track('lista_espera_inicio', { grupo: g ?? '' });
@@ -185,14 +199,54 @@ export const Bot: React.FC = () => {
       if (!emailValido(v)) { setError('Revisá el email: parece que falta algo.'); return; }
       setEmail(v); yo(v); setCampo(''); setError('');
       if (modo === 'lista') {
-        bot('Listo. Al tocar el botón se abre tu correo con tus horarios para Mara: solo tenés que enviarlo. Cuando haya un grupo que coincida, te escribe con la fecha y el link de pago.');
-        setEtapa('listo');
+        void anotarEnLista(v);
       } else {
         bot('Si querés, contame en dos o tres líneas tu situación. Podés saltear este paso.');
         setEtapa('caso');
       }
     } else if (etapa === 'caso') {
       terminarCaso(v);
+    }
+  };
+
+  const anotarEnLista = async (emailLista: string) => {
+    const esta = ++tanda.current;
+    setEtapa('enviando');
+    bot('Te anoto en la lista.');
+    const mensaje = respuestas.length === QUESTIONS.length
+      ? ['Mis respuestas del diagnóstico:', ...QUESTIONS.map((x, i) => `- ${x.t} ${respuestas[i] ?? ''}`)].join('\n')
+      : '';
+    const ctrl = new AbortController();
+    const timer = window.setTimeout(() => ctrl.abort(), 20000);
+    try {
+      const res = await fetch('/api/lista-espera', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        signal: ctrl.signal,
+        body: JSON.stringify({
+          nombre,
+          email: emailLista,
+          grupo,
+          dias,
+          franjas,
+          desde,
+          mensaje,
+          origen: origenLista(),
+          website: '',
+        }),
+      });
+      const data = await res.json().catch(() => null);
+      if (tanda.current !== esta) return;
+      if (!res.ok || !data?.ok) throw new Error('lista');
+      track('lista_espera_ok', { grupo });
+      bot('Listo, quedaste anotada/o. Mara te escribe pronto.');
+      setEtapa('anotada');
+    } catch {
+      if (tanda.current !== esta) return;
+      bot('No pude anotarte desde acá. Al tocar el botón se abre tu correo con tus horarios para Mara: solo tenés que enviarlo. Cuando haya un grupo que coincida, te escribe con la fecha y el link de pago.');
+      setEtapa('listo');
+    } finally {
+      window.clearTimeout(timer);
     }
   };
 
