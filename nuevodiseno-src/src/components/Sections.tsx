@@ -117,7 +117,7 @@ export const Programas: React.FC = () => {
 const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 const fecha = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${MESES[m - 1]} ${y}`; };
 // Contacto de prensa: abre WhatsApp con un mensaje ya escrito.
-const PRENSA_WHATSAPP = `https://wa.me/5491151127057?text=${encodeURIComponent('Hola Mara, te escribo desde [medio] porque me gustaría invitarte a una nota sobre ')}`;
+const PRENSA_WHATSAPP = `https://wa.me/5491151127057?text=${encodeURIComponent('Hola Mara, te escribo desde [medio] porque me gustaría hablar sobre una acción de prensa con Mara Schmitman')}`;
 const hoy = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 
 const Fila: React.FC<{ a: Aparicion }> = ({ a }) => (
