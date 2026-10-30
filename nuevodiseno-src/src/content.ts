@@ -111,7 +111,7 @@ export const FAQ = [
 
 // Prensa y charlas. Las fechas futuras se muestran como "Próximas"; cuando pasan, se mueven solas a la lista.
 // cta: texto del link en las próximas (por defecto "Entradas").
-export type Aparicion = { fecha: string; tipo: 'Columna' | 'Charla' | 'Podcast' | 'Video' | 'Nota'; medio: string; titulo: string; url?: string; detalle?: string; cta?: string };
+export type Aparicion = { fecha: string; tipo: 'Columna' | 'Charla' | 'Podcast' | 'Video' | 'Nota' | 'Radio'; medio: string; titulo: string; url?: string; detalle?: string; cta?: string };
 
 export const COLUMNAS: Aparicion[] = [
   { fecha: '2026-08-29', tipo: 'Columna', medio: 'El Cronista', titulo: 'El riesgo “menos visible” de la IA: una generación que revisa sin haber aprendido a hacer', url: 'https://www.cronista.com/columnistas/el-riesgo-menos-visible-de-la-ia-una-generacion-que-revisa-sin-haber-aprendido-a-hacer/' },
@@ -124,11 +124,13 @@ export const CHARLAS: Aparicion[] = [
   { fecha: '2026-10-21', tipo: 'Charla', medio: 'Universidad de San Andrés · Maestría en IA', titulo: 'Carreras profesionales en Data/AI: del especialista técnico al líder de impacto', url: 'https://eventos.udesa.edu.ar/159586/detail/carreras-profesionales-en-dataai-del-especialista-tecnico-al-lider-de-impacto.html', cta: 'Inscripción', detalle: '19 h · Auditorio Sede Riobamba (Riobamba 1276), CABA · Con Maika Basavilbaso y Mayra Sciarrillo, modera Patricio Rocca' },
   { fecha: '2026-10-20', tipo: 'Charla', medio: 'SAIAConf 2026', titulo: 'Panel «El futuro del trabajo: donde la IA nunca va a reemplazarnos»', url: 'https://saiaconf.ar/#entradas', detalle: '12:15 · Escenario Horizonte · Costa Salguero, CABA' },
   { fecha: '2026-10-04', tipo: 'Podcast', medio: 'Es Más Complejo, con Nico Lucca', titulo: '¿Sirve la IA para encontrar empleo?', url: 'https://www.youtube.com/watch?v=yNsbiTsJU9s' },
-  { fecha: '2026-09-23', tipo: 'Podcast', medio: 'Radio Con Vos · Invento Argentino', titulo: 'Inteligencia artificial: ¿contra el amor y el trabajo?', url: 'https://www.youtube.com/watch?v=lPoQdj4Efl0' },
+  { fecha: '2026-09-23', tipo: 'Podcast', medio: 'Radio Con Vos · Invento Argentino, con Claudio Martínez', titulo: 'Inteligencia artificial: ¿contra el amor y el trabajo?', url: 'https://www.youtube.com/watch?v=lPoQdj4Efl0' },
   { fecha: '2026-09-17', tipo: 'Podcast', medio: 'Builders OFF the Record #15', titulo: 'El mercado laboral tech, con Gabriel Benmergui', url: 'https://www.youtube.com/watch?v=f03ClvJUguQ&t=2261s' },
+  { fecha: '2026-09-06', tipo: 'Radio', medio: 'AM 750 · El domingo no tiene la culpa', titulo: 'Los riesgos de la inteligencia artificial', url: 'https://radiocut.fm/audiocut/entrevista-con-mara-schmitman-en-domingo-no-tiene-culpa/' },
   { fecha: '2026-08-03', tipo: 'Video', medio: 'Funky Business', titulo: 'Entrevista: psicología y gestión estratégica de recursos humanos', url: 'https://www.youtube.com/watch?v=oJ5tCCuQ7fk' },
-  { fecha: '2026-08-01', tipo: 'Video', medio: 'Eco Medios · Nada Personal', titulo: 'Entrevista en Nada Personal', url: 'https://www.youtube.com/watch?v=aMrKrJJtd3g' },
+  { fecha: '2026-08-01', tipo: 'Video', medio: 'Eco Medios · Nada Personal, con Anabella Messina', titulo: 'Entrevista en Nada Personal', url: 'https://www.youtube.com/watch?v=aMrKrJJtd3g' },
   { fecha: '2024-07-16', tipo: 'Video', medio: 'Pelado Nerd', titulo: 'Las nuevas tecnologías en el mundo de IT', url: 'https://www.youtube.com/watch?v=QxEf9yJVE6Y' },
   { fecha: '2022-08-16', tipo: 'Nota', medio: 'La Nación', titulo: 'Entrevista laboral: los errores que nos dejan fuera de carrera', url: 'https://www.lanacion.com.ar/sociedad/entrevista-laboral-los-errores-que-nos-dejan-fuera-de-carrera-y-una-pregunta-clave-que-suele-nid16082022/' },
   { fecha: '2021-05-11', tipo: 'Video', medio: 'Pelado Nerd', titulo: 'Consejos para conseguir tu primer trabajo en IT', url: 'https://www.youtube.com/watch?v=BctKQ6HX1eI' },
+  { fecha: '2020-02-24', tipo: 'Radio', medio: 'La Once Diez · Massaccesi que nunca', titulo: '¿Cómo pedir un aumento de sueldo?', url: 'https://radiocut.fm/audiocut/mara-schmitman-ceo-schmitman-hr-explica-como-pedir-un-aumento-en-tiempo-crisis/' },
 ];
