@@ -114,6 +114,7 @@ export const FAQ = [
 export type Aparicion = { fecha: string; tipo: 'Columna' | 'Charla' | 'Podcast' | 'Video' | 'Nota' | 'Radio'; medio: string; titulo: string; url?: string; detalle?: string; cta?: string };
 
 export const COLUMNAS: Aparicion[] = [
+  { fecha: '2026-10-24', tipo: 'Columna', medio: 'El Cronista', titulo: 'La inteligencia artificial no reemplaza profesiones, sí tareas', url: 'https://www.cronista.com/columnistas/la-inteligencia-artificial-no-reemplaza-profesiones-si-tareas/' },
   { fecha: '2026-08-29', tipo: 'Columna', medio: 'El Cronista', titulo: 'El riesgo “menos visible” de la IA: una generación que revisa sin haber aprendido a hacer', url: 'https://www.cronista.com/columnistas/el-riesgo-menos-visible-de-la-ia-una-generacion-que-revisa-sin-haber-aprendido-a-hacer/' },
   { fecha: '2026-08-01', tipo: 'Columna', medio: 'Ámbito', titulo: 'El espejismo de la eficiencia: ¿la inteligencia artificial mejoró la selección de personal?', url: 'https://www.ambito.com/opiniones/el-espejismo-la-eficiencia-la-inteligencia-artificial-mejoro-la-seleccion-personal-n6305904' },
   { fecha: '2020-12-06', tipo: 'Columna', medio: 'Ámbito', titulo: 'Cómo será el mundo laboral después de la pandemia', url: 'https://www.ambito.com/opiniones/trabajo/como-sera-el-mundo-laboral-despues-la-pandemia-n5153053' },
