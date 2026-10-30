@@ -126,6 +126,7 @@ export const CHARLAS: Aparicion[] = [
   { fecha: '2026-10-04', tipo: 'Podcast', medio: 'Es Más Complejo, con Nico Lucca', titulo: '¿Sirve la IA para encontrar empleo?', url: 'https://www.youtube.com/watch?v=yNsbiTsJU9s' },
   { fecha: '2026-09-23', tipo: 'Podcast', medio: 'Radio Con Vos · Invento Argentino, con Claudio Martínez', titulo: 'Inteligencia artificial: ¿contra el amor y el trabajo?', url: 'https://www.youtube.com/watch?v=lPoQdj4Efl0' },
   { fecha: '2026-09-17', tipo: 'Podcast', medio: 'Builders OFF the Record #15', titulo: 'El mercado laboral tech, con Gabriel Benmergui', url: 'https://www.youtube.com/watch?v=f03ClvJUguQ&t=2261s' },
+  { fecha: '2026-09-16', tipo: 'Video', medio: 'Ahora Play · Serrucho Económico, con Claudio Zlotnik', titulo: 'La IA y el mercado laboral: qué pasa con los puestos junior', url: 'https://www.youtube.com/watch?v=jlmmbGKYdD4&t=6810s' },
   { fecha: '2026-09-06', tipo: 'Radio', medio: 'AM 750 · El domingo no tiene la culpa', titulo: 'Los riesgos de la inteligencia artificial', url: 'https://radiocut.fm/audiocut/entrevista-con-mara-schmitman-en-domingo-no-tiene-culpa/' },
   { fecha: '2026-08-03', tipo: 'Video', medio: 'Funky Business', titulo: 'Entrevista: psicología y gestión estratégica de recursos humanos', url: 'https://www.youtube.com/watch?v=oJ5tCCuQ7fk' },
   { fecha: '2026-08-01', tipo: 'Video', medio: 'Eco Medios · Nada Personal, con Anabella Messina', titulo: 'Entrevista en Nada Personal', url: 'https://www.youtube.com/watch?v=aMrKrJJtd3g' },
