@@ -129,17 +129,19 @@ const Fila: React.FC<{ a: Aparicion }> = ({ a }) => (
   </li>
 );
 
-const Lista: React.FC<{ titulo: string; items: Aparicion[] }> = ({ titulo, items }) => (
+const Lista: React.FC<{ titulo: string; items: Aparicion[]; dosColumnas?: boolean }> = ({ titulo, items, dosColumnas }) => (
   <div>
     <p className="mono mb-2">{titulo}</p>
-    <ul className="border-b border-ink/12">{items.map((a) => <Fila key={a.fecha + a.titulo} a={a} />)}</ul>
+    <ul className={`border-b border-ink/12${dosColumnas ? ' grid md:grid-cols-2 md:gap-x-12' : ''}`}>{items.map((a) => <Fila key={a.fecha + a.titulo} a={a} />)}</ul>
   </div>
 );
 
 export const Prensa: React.FC = () => {
   const h = hoy();
   const proximas = CHARLAS.filter((a) => a.fecha >= h).sort((x, y) => x.fecha.localeCompare(y.fecha));
-  const charlas = CHARLAS.filter((a) => a.fecha < h);
+  const pasadas = CHARLAS.filter((a) => a.fecha < h);
+  const charlas = pasadas.filter((a) => a.tipo === 'Charla');
+  const entrevistas = pasadas.filter((a) => a.tipo !== 'Charla');
   return (
     <div className="max-w-4xl">
       <Eyebrow>04 / Prensa y charlas</Eyebrow>
@@ -156,7 +158,10 @@ export const Prensa: React.FC = () => {
       ))}
       <div className="grid md:grid-cols-2 gap-8 md:gap-12 mt-7">
         <Lista titulo="Columnas" items={COLUMNAS} />
-        <Lista titulo="Charlas y entrevistas" items={charlas} />
+        {charlas.length > 0 && <Lista titulo="Charlas" items={charlas} />}
+      </div>
+      <div className="mt-10">
+        <Lista titulo="Entrevistas" items={entrevistas} dosColumnas />
       </div>
     </div>
   );
