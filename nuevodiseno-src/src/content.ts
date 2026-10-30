@@ -132,6 +132,7 @@ export const CHARLAS: Aparicion[] = [
   { fecha: '2026-08-03', tipo: 'Video', medio: 'Funky Business', titulo: 'Entrevista: psicología y gestión estratégica de recursos humanos', url: 'https://www.youtube.com/watch?v=oJ5tCCuQ7fk' },
   { fecha: '2026-08-01', tipo: 'Video', medio: 'Eco Medios · Nada Personal, con Anabella Messina', titulo: 'Entrevista en Nada Personal', url: 'https://www.youtube.com/watch?v=aMrKrJJtd3g' },
   { fecha: '2024-07-16', tipo: 'Video', medio: 'Pelado Nerd', titulo: 'Las nuevas tecnologías en el mundo de IT', url: 'https://www.youtube.com/watch?v=QxEf9yJVE6Y' },
+  { fecha: '2023-08-17', tipo: 'Charla', medio: '9° Congreso Argentino de Recursos Humanos · Usina del Arte', titulo: '4 Days Workweek: tendencias globales', url: 'https://www.youtube.com/watch?v=wKVKNe5dOfE' },
   { fecha: '2022-08-16', tipo: 'Nota', medio: 'La Nación', titulo: 'Entrevista laboral: los errores que nos dejan fuera de carrera', url: 'https://www.lanacion.com.ar/sociedad/entrevista-laboral-los-errores-que-nos-dejan-fuera-de-carrera-y-una-pregunta-clave-que-suele-nid16082022/' },
   { fecha: '2021-05-11', tipo: 'Video', medio: 'Pelado Nerd', titulo: 'Consejos para conseguir tu primer trabajo en IT', url: 'https://www.youtube.com/watch?v=BctKQ6HX1eI' },
   { fecha: '2020-02-24', tipo: 'Radio', medio: 'La Once Diez · Massaccesi que nunca', titulo: '¿Cómo pedir un aumento de sueldo?', url: 'https://radiocut.fm/audiocut/mara-schmitman-ceo-schmitman-hr-explica-como-pedir-un-aumento-en-tiempo-crisis/' },
