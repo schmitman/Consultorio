@@ -116,6 +116,8 @@ export const Programas: React.FC = () => {
 /* ---------- 04 EN LOS MEDIOS ---------- */
 const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 const fecha = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${MESES[m - 1]} ${y}`; };
+// Contacto de prensa: abre WhatsApp con un mensaje ya escrito.
+const PRENSA_WHATSAPP = `https://wa.me/5491151127057?text=${encodeURIComponent('Hola Mara, te escribo desde [medio] porque me gustaría invitarte a una nota sobre ')}`;
 const hoy = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 
 const Fila: React.FC<{ a: Aparicion }> = ({ a }) => (
@@ -146,6 +148,9 @@ export const Prensa: React.FC = () => {
     <div className="max-w-4xl">
       <Eyebrow>04 / Prensa y charlas</Eyebrow>
       <H2>En los <em>medios</em><span className="dot">.</span></H2>
+      <div className="mt-5">
+        <a href={PRENSA_WHATSAPP} target="_blank" rel="noopener" className="btn btn-dark">Contacto de prensa por WhatsApp ↗</a>
+      </div>
       {proximas.map((a) => (
         <div key={a.fecha + a.titulo} className="mt-6 pl-4 border-l-2 border-green">
           <p className="mono !text-green">Próxima · {fecha(a.fecha)} · {a.medio}</p>
